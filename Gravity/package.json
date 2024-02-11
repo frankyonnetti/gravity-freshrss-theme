@@ -1,0 +1,38 @@
+{
+  "name": "gravity-freshrss",
+  "version": "0.1.0",
+  "description": "A macOS theme",
+  "author": "Frank Yonnetti",
+  "license": "GPL-2.0 AND MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "serve": "browser-sync start --config './bsync-config.js'",
+    "style": "sass --style=expanded --error-css --source-map ./sass/gravity.scss ./gravity.css",
+    "postcss": "postcss ./gravity.css --use autoprefixer --map --replace",
+    "build": "npm run style && npm run postcss",
+    "onchange:style": "nodemon --watch ./sass/ --ext scss --exec 'npm run style' --quiet",
+    "watch:bs": "concurrently --raw --kill-others 'npm run serve' 'npm run onchange:style'",
+    "watch": "concurrently --raw --kill-others 'npm run onchange:style'"
+  },
+  "browserslist": [
+    "> 0.2%",
+    "last 2 version",
+    "Firefox ESR",
+    "not dead"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "browser-sync": "^3.0.2",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.3",
+    "postcss": "^8.4.33",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.70.0",
+    "stylelint": "^16.2.0",
+    "stylelint-config-sass-guidelines": "^11.0.0",
+    "stylelint-order": "^6.0.4"
+  }
+}
