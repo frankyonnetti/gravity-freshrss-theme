@@ -8,7 +8,9 @@ html,
 body {
   color: $text-color;
   font-size: 16px;
-  font-family: "OpenSans", "Cantarell", "Helvetica", "Arial", sans-serif;
+  line-height: 1.15;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  -webkit-text-size-adjust: 100%;
   background-color: $main-bg;
   height: 100%;
 }
@@ -20,9 +22,14 @@ button.as-link {
   outline: none;
 }
 
+// ! Type
+h1 {
+  font-weight: normal;
+}
+
 // ! Buttons
 .btn {
-  font-size: 0.9rem;
+  font-size: rem(14);
   line-height: 1.7;
   vertical-align: middle;
   margin: 0;
@@ -39,6 +46,22 @@ button.as-link {
   font-weight: normal;
 }
 
+button.btn {
+  color: $white;
+  border: 1px solid $border-light;
+  border-radius: 3px;
+  background-color: $bg-light;
+}
+
+button.btn-important {
+  border-color: $gravity-blue-color-light;
+  background-color: $gravity-blue-color-base;
+}
+
+.btn.toggle-password .icon {
+  opacity: 0.6;
+}
+
 // ! Tables
 table {
   border-collapse: collapse;
@@ -52,7 +75,7 @@ form th {
 
 // ! Forms
 legend {
-  font-size: 1.4rem;
+  font-size: rem(22);
   margin: 20px 0 5px;
   padding: 5px 0;
 }
@@ -75,8 +98,37 @@ textarea {
   padding: 7px;
 }
 
+input,
+textarea {
+  @include placeholder;
+  border: 1px solid $border-light;
+  background-color: $main-bg;
+}
+
 option {
   padding: 0 .5rem;
+}
+
+// ! Form group
+.form-group {
+
+	&.form-actions {
+		padding: 5px 0;
+
+			.btn {
+				margin: 0 10px 0 0;
+			}
+	}
+
+	.group-name {
+		text-align: right;
+		padding: 10px 0;
+	}
+
+	.group-controls {
+		padding: 5px 0;
+		min-height: 25px;
+	}
 }
 
 // ====================================
@@ -89,7 +141,7 @@ option {
 
 // ! Alerts
 .alert {
-  font-size: 0.9rem;
+  font-size: rem(14);
 
   > a {
     text-decoration: underline;
@@ -97,7 +149,7 @@ option {
 }
 
 .alert-head {
-  font-size: 1.15rem;
+  font-size: rem(18);
 }
 
 // .alert-warn {}
@@ -142,7 +194,7 @@ option {
 
 // ! New article notification
 #new-article {
-  font-size: 0.9rem;
+  font-size: rem(14);
   text-align: center;
 
   > a {
@@ -167,7 +219,7 @@ option {
 
 // ! Dropdown
 .dropdown-menu {
-  font-size: 0.8rem;
+  font-size: rem(13);
   text-align: left;
   border-color: $border-light;
   border-radius: 8px;
@@ -280,6 +332,7 @@ option {
     &.search {
 
       input {
+        @include placeholder;
         border: 1px solid $border;
         border-right-style: none;
         border-radius: 5px 0 0 5px;
@@ -343,7 +396,7 @@ option {
 
 // ! Aside main page (categories)
 .aside_feed .tree-folder-title > .title:not([data-unread="0"])::after {
-  font-size: 0.9rem;
+  font-size: rem(14);
   line-height: 1.5;
   position: absolute;
   right: 0;
@@ -380,6 +433,10 @@ option {
       position: relative;
       padding: 5px 10px 0;
 
+      .icon {
+        opacity: 0.6;
+      }
+
       .title {
         color: $md-gray-400;
         background: inherit;
@@ -387,14 +444,16 @@ option {
         &:hover {
           text-decoration: none;
         }
+
+        &.error::before {
+          color: $white;
+        }
       }
     }
 
     // .tree-folder.active {
 
-    //   .tree-folder-title {
-    //     font-weight: bold;
-    //   }
+    //   .tree-folder-title {}
     // }
 
     .tree-folder-items {
@@ -410,9 +469,13 @@ option {
           text-decoration: none;
         }
 
-        .item-title::after {
-          margin-top: 6px !important;
-          padding-right: 0;
+        .item-title {
+          font-weight: normal;
+
+          &::after {
+            margin-top: 6px !important;
+            padding-right: 0;
+          }
         }
       }
 
@@ -437,6 +500,32 @@ option {
 
   .dropdown .dropdown-menu::after {
     right: 33px;
+  }
+}
+
+// ! Navigation
+.nav-list {
+  padding: 1rem 2rem;
+
+  .item {
+    font-size: rem(14);
+    line-height: 2.5;
+    margin-bottom: 1px;
+
+    .nav-header {
+      color: rgba($text-color, 0.5);
+    }
+
+    a {
+      text-decoration: none;
+      border-radius: 5px;
+      padding: 0 8px;
+    }
+
+    a:hover,
+    &.active a {
+      background-color: $gravity-blue-color-base;
+    }
   }
 }
 
@@ -567,14 +656,14 @@ option {
 
 // ! Pagination
 .pagination {
-  font-size: 0.8rem;
+  font-size: rem(13);
   text-align: center;
   @media (max-width: 840px) {
     margin: 0 0 3.5rem;
   }
 
   .item.pager-current {
-    font-size: 1.5rem;
+    font-size: rem(24);
     font-weight: bold;
   }
 
@@ -644,8 +733,7 @@ option {
 // ! Day
 .day {
   color: $md-gray-500;
-  font-size: rem(15);
-  font-weight: bold;
+  font-size: rem(14);
   border-bottom: 1px solid $gravity-blue-color-light;
   padding: 10px;
 
@@ -664,7 +752,7 @@ option {
   }
 }
 
-// ! Feed articles
+// ! Feed articles (flux)
 .flux {
   border-bottom: 1px solid $border;
 
@@ -672,7 +760,12 @@ option {
 
   // &.current {}
 
-  // &.not_read {}
+  &.not_read {
+
+    .item.title {
+      font-weight: normal;
+    }
+  }
 
   // &.not_read:not(.current):hover .item.title {}
 
@@ -692,7 +785,7 @@ option {
   }
 
   .item.date {
-    font-size: 0.7rem;
+    font-size: rem(11);
 
     time sup {
       font-size: inherit;
@@ -703,17 +796,17 @@ option {
   // .flux:not(.current):hover .item.title {}
 
   .bottom {
-    font-size: 0.8rem;
+    font-size: rem(13);
     text-align: center;
   }
 }
 
 .flux_header {
-  font-size: 0.8rem;
+  font-size: rem(13);
   cursor: pointer;
 
   .title {
-    font-size: 0.9rem;
+    font-size: rem(14);
   }
 }
 
@@ -727,7 +820,7 @@ option {
   }
 
   pre {
-    font-size: 0.9rem;
+    font-size: rem(14);
     overflow: auto;
     margin: 10px auto;
     padding: 10px 20px;
@@ -767,9 +860,36 @@ option {
   }
 }
 
-// ====================================
-// Current unknows
-// ====================================
+// ! Boxes
+.box {
+
+  .box-title {
+    position: relative;
+    margin: 0;
+    padding: 5px 10px;
+
+    .configure {
+      position: absolute;
+      top: 0.6rem;
+      left: 0.5rem;
+    }
+
+    h2 {
+      margin: 0.5rem 0;
+      padding-left: 1rem;
+    }
+  }
+
+  .box-content {
+    max-height: 260px;
+
+    .item {
+      font-size: rem(14);
+      line-height: 2.5;
+      padding: 0 10px;
+    }
+  }
+}
 
 .box.category .box-title .title {
   font-weight: normal;
@@ -797,6 +917,15 @@ option {
   right: 10px;
 }
 
+.drop-section .box:not(.visible-semi) {
+  border: 2px solid $border;
+  border-radius: 8px;
+}
+
+.drop-section .box.visible-semi {
+  border-radius: 8px;
+}
+
 // ! STATISTICS
 
 .stat {
@@ -807,57 +936,6 @@ option {
     text-align: center;
   }
 }
-
-// ! Form group
-// .form-group {
-
-// 	&.form-actions {
-// 		padding: 5px 0;
-
-// 			.btn {
-// 				margin: 0 10px;
-// 			}
-// 	}
-
-// 	.group-name {
-// 		text-align: right;
-// 		padding: 10px 0;
-// 	}
-
-// 	.group-controls {
-// 		padding: 5px 0;
-// 		min-height: 25px;
-// 	}
-// }
-
-// ! Navigation
-// .nav-list {
-
-//   .nav-header,
-//   .item {
-//     font-size: 0.9rem;
-//     line-height: 2.5;
-//   }
-// }
-
-// ! Boxes
-// .box {
-
-//   .box-title {
-//     margin: 0;
-//     padding: 5px 10px;
-//   }
-
-//   .box-content {
-//     max-height: 260px;
-
-//     .item {
-//       font-size: 0.9rem;
-//       line-height: 2.5;
-//       padding: 0 10px;
-//     }
-//   }
-// }
 
 // ! Prompt (centered)
 // .prompt {
