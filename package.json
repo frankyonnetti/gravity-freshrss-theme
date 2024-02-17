@@ -9,12 +9,11 @@
     "url": ""
   },
   "scripts": {
-    "serve": "browser-sync start --config './bsync-config.js'",
-    "style": "sass --style=expanded --error-css --source-map ./sass/gravity.scss ./gravity.css",
-    "postcss": "postcss ./gravity.css --use autoprefixer --map --replace",
-    "build": "npm run style && npm run postcss",
-    "onchange:style": "nodemon --watch ./sass/ --ext scss --exec 'npm run style' --quiet",
-    "watch:bs": "concurrently --raw --kill-others 'npm run serve' 'npm run onchange:style'",
+    "style": "sass --style=compressed --error-css --source-map ./src/sass/gravity.scss ./Gravity/gravity.css",
+    "postcss": "postcss ./Gravity/gravity.css --use autoprefixer --map --replace",
+    "svgo": "svgo -f ./src/icons -o ./Gravity/icons --config ./svgo.config.js",
+    "build": "npm run style && npm run postcss && npm run svgo",
+    "onchange:style": "nodemon --watch ./src/sass/ --ext scss --exec 'npm run style' --quiet",
     "watch": "concurrently --raw --kill-others 'npm run onchange:style'"
   },
   "browserslist": [
@@ -25,7 +24,6 @@
   ],
   "devDependencies": {
     "autoprefixer": "^10.4.17",
-    "browser-sync": "^3.0.2",
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.3",
     "postcss": "^8.4.33",
@@ -33,6 +31,7 @@
     "sass": "^1.70.0",
     "stylelint": "^16.2.0",
     "stylelint-config-sass-guidelines": "^11.0.0",
-    "stylelint-order": "^6.0.4"
+    "stylelint-order": "^6.0.4",
+    "svgo": "^3.2.0"
   }
 }

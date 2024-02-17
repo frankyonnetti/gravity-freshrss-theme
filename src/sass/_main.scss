@@ -159,7 +159,7 @@ option {
 .configure {
 
   .btn.dropdown-toggle .icon {
-    opacity: 0.65;
+    opacity: 0.6;
     width: 24px;
     height: auto;
   }
@@ -194,23 +194,39 @@ option {
       border-color: $border;
     }
 
+    &.dropdown-section {
+      padding-top: 4px;
+    }
+
     .dropdown-section-title {
-      padding: 0 24px;
+      color: rgba($text-color, 0.5);
+      padding: 4px 10px;
     }
 
     > a,
     > span,
     > .as-link {
-      line-height: 2.5;
       border-radius: 5px;
-      padding: 0 22px;
+      padding: 4px 8px;
 
       &:hover {
         background-color: $gravity-blue-color-base;
+      }
+    }
 
-        .icon {
-          opacity: 1 !important;
-        }
+    > .as-link[disabled]:hover {
+      background-color: transparent;
+    }
+
+    .signout {
+
+      .icon {
+        float: right;
+        opacity: 0.6;
+      }
+
+      &:hover .icon {
+        opacity: 1;
       }
     }
 
@@ -242,6 +258,7 @@ option {
 // ====================================
 
 .header {
+  border-bottom: 1px solid $border;
   background-color: $sideBar-background;
   height: 85px;
 
@@ -285,6 +302,7 @@ option {
 // ====================================
 
 .aside {
+  border-right: 1px solid $border;
   @media (max-width: 840px) {
     transition: width 200ms linear;
   }
@@ -333,6 +351,10 @@ option {
   padding: 0 10px;
 }
 
+.feed.active .item-title:not([data-unread="0"])::after {
+  border-style: none;
+}
+
 .aside_feed .tree-folder-items {
 
   .dropdown-menu::after {
@@ -347,48 +369,56 @@ option {
 }
 
 // ! Tree
-.tree {
+#sidebar.tree {
   margin: 10px 0;
-}
 
-.tree-folder-title {
-  font-size: 1rem;
-  line-height: 2.5;
-  position: relative;
-  padding: 0 10px;
+  .tree-folder.category {
 
-  .title {
-    background: inherit;
+    .tree-folder-title {
+      font-size: rem(14);
+      line-height: 2.5;
+      position: relative;
+      padding: 5px 10px 0;
 
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
+      .title {
+        color: $md-gray-400;
+        background: inherit;
 
-.tree-folder.active {
-
-  .tree-folder-title {
-    font-weight: bold;
-  }
-}
-
-.tree-folder-items {
-  background-color: $sideBar-background;
-
-  > .item {
-    font-size: 0.8rem;
-
-    &.active {
-      background-color: $bg-light;
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
 
-    > a {
-      text-decoration: none;
-    }
+    // .tree-folder.active {
 
-    .item-title::after {
-      margin-top: 6px !important;
+    //   .tree-folder-title {
+    //     font-weight: bold;
+    //   }
+    // }
+
+    .tree-folder-items {
+
+      > .item {
+        font-size: rem(13);
+
+        &.active {
+          background-color: $bg-light;
+        }
+
+        > a {
+          text-decoration: none;
+        }
+
+        .item-title::after {
+          margin-top: 6px !important;
+          padding-right: 0;
+        }
+      }
+
+      &.active {
+        border-bottom: 1px solid $border;
+      }
     }
   }
 }
@@ -432,10 +462,6 @@ option {
 
     &:hover {
       background-color: $gravity-blue-color-base;
-
-      .icon {
-        opacity: 1 !important;
-      }
     }
   }
 
@@ -507,12 +533,21 @@ option {
   #actualize {
 
     .icon {
-      opacity: 0.65;
+      opacity: 0.6;
       width: 24px;
       height: auto;
     }
 
+    *:hover .icon,
     .btn.active .icon {
+      opacity: 1;
+    }
+  }
+
+  #toggle-order,
+  #actualize {
+
+    &:hover .icon {
       opacity: 1;
     }
   }
@@ -569,7 +604,7 @@ option {
 
 // ! Load more
 #stream-footer {
-  border-top-color: $border;
+  border-top-style: none;
 
   .stream-footer-inner {
     color: $md-gray-400;
@@ -631,6 +666,7 @@ option {
 
 // ! Feed articles
 .flux {
+  border-bottom: 1px solid $border;
 
   // &:hover {}
 

@@ -20,7 +20,15 @@ module.exports = {
   ui: false,
   reloadOnRestart: true,
   files: [
-    'gravity.css',
-    'gravity.rtl.css'
-  ]
+    'Gravity/gravity.css',
+    'Gravity/gravity.rtl.css'
+  ],
+  snippetOptions: {
+    rule: {
+      match: /<\/body>/i,
+      fn: function (snippet, match) {
+        return snippet + match
+      }
+    }
+  }
 }
