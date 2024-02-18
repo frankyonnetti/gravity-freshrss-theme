@@ -14,7 +14,8 @@
     "svgo": "svgo -f ./src/icons -o ./Gravity/icons --config ./svgo.config.js",
     "build": "npm run style && npm run postcss && npm run svgo",
     "onchange:style": "nodemon --watch ./src/sass/ --ext scss --exec 'npm run style' --quiet",
-    "watch": "concurrently --raw --kill-others 'npm run onchange:style'"
+    "onchange:svgo": "nodemon --watch ./src/icons --ext svg --exec 'npm run svgo' --quiet",
+    "watch": "concurrently --raw --kill-others 'npm run onchange:style' 'npm run onchange:svgo'"
   },
   "browserslist": [
     "> 0.2%",

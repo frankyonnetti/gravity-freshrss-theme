@@ -1,3 +1,5 @@
+// stylelint-disable selector-no-vendor-prefix
+
 // Convert px to rem
 @function rem($pixels, $context: 16) {
   @return math.div($pixels, $context) * 1rem;
@@ -10,4 +12,30 @@
   &:-ms-input-placeholder { color: $color; }
   &:-moz-placeholder { color: $color; }
   &::placeholder { color: $color; }
+}
+
+@mixin btn {
+  font-size: rem(14);
+  line-height: 1.7;
+  vertical-align: middle;
+  margin: 0;
+  padding: 5px 10px;
+  min-width: 15px;
+  min-height: 25px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin buttonbtn($color: $white, $border-color: $border-light, $bg-color: $main-bg-light) {
+  @include btn;
+  color: $color;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  background-color: $bg-color;
+
+  &:hover {
+    background-color: color.adjust($bg-color, $lightness: 5%);
+  }
 }

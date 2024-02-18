@@ -18,44 +18,28 @@ body {
 // ! Links
 a,
 button.as-link {
-  color: $link-color;
+  color: $link-color-light;
   outline: none;
 }
 
 // ! Type
-h1 {
+h1,
+h2 {
   font-weight: normal;
 }
 
 // ! Buttons
 .btn {
-  font-size: rem(14);
-  line-height: 1.7;
-  vertical-align: middle;
-  margin: 0;
-  padding: 5px 10px;
-  min-width: 15px;
-  min-height: 25px;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.btn-important {
-  font-weight: normal;
+  @include btn;
 }
 
 button.btn {
-  color: $white;
-  border: 1px solid $border-light;
-  border-radius: 3px;
-  background-color: $bg-light;
+  @include buttonbtn;
 }
 
-button.btn-important {
-  border-color: $gravity-blue-color-light;
-  background-color: $gravity-blue-color-base;
+.btn-important {
+  @include buttonbtn ($white, $gravity-blue-color-light, $gravity-blue-color-base);
+  font-weight: normal;
 }
 
 .btn.toggle-password .icon {
@@ -65,6 +49,15 @@ button.btn-important {
 // ! Tables
 table {
   border-collapse: collapse;
+
+  tr {
+    border-bottom: 1px solid $border;
+  }
+
+  thead tr {
+    border-bottom: 2px solid $border-light;
+    background-color: rgba($white, 0.05);
+  }
 }
 
 form td,
@@ -94,6 +87,7 @@ textarea {
 input,
 select,
 textarea {
+  border-radius: 3px;
   vertical-align: middle;
   padding: 7px;
 }
@@ -101,6 +95,13 @@ textarea {
 input,
 textarea {
   @include placeholder;
+  color: $white;
+  border: 1px solid $border-light;
+  background-color: $main-bg;
+}
+
+select {
+  color: $white;
   border: 1px solid $border-light;
   background-color: $main-bg;
 }
@@ -120,13 +121,17 @@ option {
 			}
 	}
 
+  .btn.btn-attention {
+    @include buttonbtn ($white, $gravity-blue-color-light, $gravity-blue-color-base);
+  }
+
 	.group-name {
 		text-align: right;
 		padding: 10px 0;
 	}
 
 	.group-controls {
-		padding: 5px 0;
+		padding: 10px 0;
 		min-height: 25px;
 	}
 }
@@ -139,9 +144,19 @@ option {
   height: calc(100% - 85px);
 }
 
+.icon {
+  opacity: 0.6;
+}
+
+kbd {
+  border-style: none;
+  margin: 1px;
+}
+
 // ! Alerts
 .alert {
   font-size: rem(14);
+  border-radius: 3px;
 
   > a {
     text-decoration: underline;
@@ -152,15 +167,27 @@ option {
   font-size: rem(18);
 }
 
-// .alert-warn {}
+.alert-warn {
+  color: $white;
+  background-color: $gravity-blue-color-light;
+}
 
-// .alert-success {}
+.alert-success {
+  color: $white;
+  background-color: $md-lime-800;
+}
 
-// .alert-error {}
-
+.alert-error {
+  color: $white;
+  background-color: $gravity-red-color-base;
+}
 
 // ! Notifications
 .notification {
+  font-size: 1rem;
+  font-weight: normal;
+  border-style: none;
+  border-radius: 3px;
 
   a.close {
     @media (max-width: 840px) {
@@ -169,6 +196,7 @@ option {
     }
 
     .icon {
+      opacity: 1;
       @media (max-width: 840px) {
         display: none;
       }
@@ -181,15 +209,19 @@ option {
     }
   }
 
-  // &.good {
+  &.good {
+    color: $white;
+    background-color: $md-lime-800;
 
-  //   a.close:hover {}
-  // }
+    // a.close:hover {}
+  }
 
-  // &.bad {
+  &.bad {
+    color: $white;
+    background-color: $gravity-red-color-base;
 
-  //   a.close:hover {}
-  // }
+    // a.close:hover {}
+  }
 }
 
 // ! New article notification
@@ -368,9 +400,9 @@ option {
     }
 
     #btn-subscription {
-      border: 1px solid $border;
+      border: 1px solid $gravity-blue-color-base;
       border-radius: 5px 0 0 5px;
-      background-color: $bg-light;
+      background-color: $main-bg;
 
       &:hover {
         border-color: $gravity-blue-color-base;
@@ -379,12 +411,17 @@ option {
     }
 
     #btn-add {
-      border: 1px solid $border;
+      border: 1px solid $gravity-blue-color-base;
       border-radius: 0 5px 5px 0;
+      background-color: $gravity-blue-color-base;
+
+      .icon {
+        opacity: 1;
+      }
 
       &:hover {
         border-color: $gravity-blue-color-base;
-        background-color: $gravity-blue-color-base;
+        background-color: color.adjust($gravity-blue-color-base, $lightness: 5%);
       }
     }
 
@@ -451,18 +488,18 @@ option {
       }
     }
 
-    // .tree-folder.active {
-
-    //   .tree-folder-title {}
-    // }
-
     .tree-folder-items {
 
       > .item {
         font-size: rem(13);
 
+        &:hover {
+          background-color: $main-bg-light;
+        }
+
         &.active {
-          background-color: $bg-light;
+          background-color: $main-bg-light;
+          box-shadow: inset -3px 0 0 0 $gravity-blue-color-base;
         }
 
         > a {
@@ -530,6 +567,14 @@ option {
 }
 
 // ====================================
+// ! Slider ===========================
+// ====================================
+
+#slider {
+  background-color: $main-bg;
+}
+
+// ====================================
 // ! Top menu =========================
 // ====================================
 
@@ -546,7 +591,7 @@ option {
     }
 
     &.active {
-      background-color: $bg-light;
+      background-color: $main-bg-light;
     }
 
     &:hover {
@@ -572,7 +617,7 @@ option {
         color: $text-color;
         border-style: none;
         border-radius: 5px 0 0 5px;
-        background-color: $bg-light;
+        background-color: $main-bg-light;
         margin: 0;
         transition: background-color 0.5s ease;
 
@@ -730,6 +775,14 @@ option {
 // ! Content ==========================
 // ====================================
 
+main {
+
+  a,
+  button.as-link {
+  color: $gravity-blue-color-light;
+  }
+}
+
 // ! Day
 .day {
   color: $md-gray-500;
@@ -776,7 +829,7 @@ option {
   .item.title {
 
     a {
-      color: $link-color;
+      color: $link-color-light;
     }
   }
 
@@ -786,6 +839,7 @@ option {
 
   .item.date {
     font-size: rem(11);
+    width: 200px;
 
     time sup {
       font-size: inherit;
@@ -843,7 +897,7 @@ option {
   }
 }
 
-// ! READER VIEW
+// ! Reader View
 
 #stream.reader .flux {
   color: #333;
@@ -891,13 +945,13 @@ option {
   }
 }
 
-.box.category .box-title .title {
+.box .box-title .title {
   font-weight: normal;
   text-align: left;
   text-decoration: none;
 }
 
-.box.category:not([data-unread="0"]) .box-title {
+.box:not([data-unread="0"]) .box-title {
 
   // &:active {}
 
@@ -906,7 +960,7 @@ option {
   }
 }
 
-.box.category .title:not([data-unread="0"])::after {
+.box .title:not([data-unread="0"])::after {
   font-weight: bold;
   text-shadow: none;
   border: 0;
@@ -917,7 +971,7 @@ option {
   right: 10px;
 }
 
-.drop-section .box:not(.visible-semi) {
+.box:not(.visible-semi) {
   border: 2px solid $border;
   border-radius: 8px;
 }
@@ -926,7 +980,7 @@ option {
   border-radius: 8px;
 }
 
-// ! STATISTICS
+// ! Statistics
 
 .stat {
   margin: 10px 0 20px;
@@ -938,47 +992,34 @@ option {
 }
 
 // ! Prompt (centered)
-// .prompt {
-//   text-align: center;
+.prompt {
+  text-align: center;
 
-//   label {
-//     text-align: left;
-//   }
-
-//   form {
-//     margin: 10px auto 20px;
-//     width: 180px;
-//   }
-
-//   input {
-//     margin: 5px auto;
-//     width: 100%;
-//   }
-
-//   p {
-//     margin: 20px 0;
-//   }
-// }
-
-
-// ====================================
-// ! Mobile ===========================
-// ====================================
-
-@media (max-width: 840px) {
-
-  .aside .toggle_aside,
-  #overlay .close,
-  .dropdown-menu .toggle_aside,
-  #slider .toggle_aside {
-    border-bottom-color: #ddd;
-    background: #fff;
+  label {
+    text-align: left;
   }
 
-  .aside .toggle_aside:hover,
-  #overlay .close:hover,
-  .dropdown-menu .toggle_aside:hover,
-  #slider .toggle_aside:hover {
-    background-color: #ddd;
+  form {
+    margin: 10px auto 20px;
+    width: 180px;
+  }
+
+  input {
+    margin: 5px auto;
+    width: 100%;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+}
+
+.theme-preview-list {
+  border-color: $border-light;
+  border-radius: 5px;
+
+  .properties {
+    border-style: none;
+    background-color: rgba($black, 0.5);
   }
 }
