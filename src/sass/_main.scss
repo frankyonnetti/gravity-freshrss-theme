@@ -291,7 +291,7 @@ kbd {
     > span,
     > .as-link {
       border-radius: 5px;
-      padding: 4px 8px;
+      padding: 6px 8px;
 
       &:hover {
         background-color: $gravity-blue-color-base;
@@ -365,7 +365,7 @@ kbd {
 
       input {
         @include placeholder;
-        border: 1px solid $border;
+        border: 1px solid $border-light;
         border-right-style: none;
         border-radius: 5px 0 0 5px;
         background-color: $sideBar-background;
@@ -373,10 +373,18 @@ kbd {
       }
 
       button {
-        border: 1px solid $border;
+        border: 1px solid $border-light;
         border-left-style: none;
         border-radius: 0 5px 5px 0;
         background-color: $sideBar-background;
+
+        &:hover {
+          background-color: $gravity-blue-color-base;
+
+          .icon {
+            opacity: 1;
+          }
+        }
       }
     }
   }
@@ -400,9 +408,9 @@ kbd {
     }
 
     #btn-subscription {
-      border: 1px solid $gravity-blue-color-base;
+      border: 1px solid $border;
       border-radius: 5px 0 0 5px;
-      background-color: $main-bg;
+      background-color: $border;
 
       &:hover {
         border-color: $gravity-blue-color-base;
@@ -411,9 +419,9 @@ kbd {
     }
 
     #btn-add {
-      border: 1px solid $gravity-blue-color-base;
+      border: 1px solid $border;
       border-radius: 0 5px 5px 0;
-      background-color: $gravity-blue-color-base;
+      background-color: $main-bg;
 
       .icon {
         opacity: 1;
@@ -421,8 +429,17 @@ kbd {
 
       &:hover {
         border-color: $gravity-blue-color-base;
-        background-color: color.adjust($gravity-blue-color-base, $lightness: 5%);
+        background-color: $gravity-blue-color-base;
       }
+    }
+
+    .category .title.error::before {
+      opacity: 0.6;
+    }
+
+    #mark-read-aside {
+      border-top: 1px solid $border;
+      margin-top: 10px;
     }
 
     .tree {
@@ -581,7 +598,9 @@ kbd {
 // ! nav_menu toolbar
 .nav_menu {
   text-align: center;
-  padding: 0.5rem 0;
+  border-bottom: 1px solid $border;
+  margin-bottom: 0.5rem;
+  padding: 10px 0;
 
   .btn {
     border-radius: 5px;
@@ -616,7 +635,7 @@ kbd {
       .read_all.btn.confirm {
         color: $text-color;
         border-style: none;
-        border-radius: 5px 0 0 5px;
+        border-radius: 5px 0 0 5px !important;
         background-color: $main-bg-light;
         margin: 0;
         transition: background-color 0.5s ease;
@@ -787,7 +806,7 @@ main {
 .day {
   color: $md-gray-500;
   font-size: rem(14);
-  border-bottom: 1px solid $gravity-blue-color-light;
+  border-bottom: 2px solid $border-light;
   padding: 10px;
 
   .date {
@@ -799,7 +818,7 @@ main {
   }
 
   .name {
-    color: $gravity-blue-color-light;
+    color: $md-gray-500;
     text-align: right;
     padding: 0 10px 0 0;
   }
@@ -851,7 +870,9 @@ main {
     }
   }
 
-  // .flux:not(.current):hover .item.title {}
+  &:not(.current):hover .item.title {
+    position: unset;
+  }
 
   .bottom {
     font-size: rem(13);
