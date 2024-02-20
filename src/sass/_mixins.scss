@@ -32,10 +32,12 @@
   @include btn;
   color: $color;
   border: 1px solid $border-color;
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: $bg-color;
+  transition: color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
 
   &:hover {
     background-color: color.adjust($bg-color, $lightness: 5%);
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
   }
 }

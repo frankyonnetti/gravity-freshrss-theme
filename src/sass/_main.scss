@@ -276,9 +276,6 @@ kbd {
     &.separator,
     &.dropdown-section {
       border-color: $border;
-    }
-
-    &.dropdown-section {
       padding-top: 4px;
     }
 
@@ -361,7 +358,12 @@ kbd {
       }
     }
 
+    // ! search
     &.search {
+      @media (max-width: 840px) {
+        display: inline-block;
+        max-width: 97%;
+      }
 
       input {
         @include placeholder;
@@ -370,6 +372,16 @@ kbd {
         border-radius: 5px 0 0 5px;
         background-color: $sideBar-background;
         width: 350px;
+        @media (max-width: 840px) {
+          width: 90px;
+          max-width: 97%;
+        }
+
+        &:focus {
+          @media (max-width: 840px) {
+            width: 400px;
+          }
+        }
       }
 
       button {
@@ -402,15 +414,15 @@ kbd {
 
   &.aside_feed {
     text-align: center;
-    padding: 10px 0;
-    @media (max-width: 840px) {
-      padding: 0;
+    padding: 0;
+    @media (min-width: 841px) {
+      padding: 1rem 0;
     }
 
     #btn-subscription {
-      border: 1px solid $border;
+      border: 1px solid $border-light;
       border-radius: 5px 0 0 5px;
-      background-color: $border;
+      background-color: $main-bg-light;
 
       &:hover {
         border-color: $gravity-blue-color-base;
@@ -419,9 +431,10 @@ kbd {
     }
 
     #btn-add {
-      border: 1px solid $border;
+      border: 1px solid $border-light;
+      border-left-style: none;
       border-radius: 0 5px 5px 0;
-      background-color: $main-bg;
+      background-color: $main-bg-light;
 
       .icon {
         opacity: 1;
@@ -438,8 +451,8 @@ kbd {
     }
 
     #mark-read-aside {
-      border-top: 1px solid $border;
-      margin-top: 10px;
+      // border-top: 1px solid $border;
+      margin-top: 1rem;
     }
 
     .tree {
@@ -509,6 +522,7 @@ kbd {
 
       > .item {
         font-size: rem(13);
+        padding: 0 12px;
 
         &:hover {
           background-color: $main-bg-light;
@@ -519,12 +533,17 @@ kbd {
           box-shadow: inset -3px 0 0 0 $gravity-blue-color-base;
         }
 
+        .dropdown.no-mobile {
+          padding: 8px 0;
+        }
+
         > a {
           text-decoration: none;
         }
 
         .item-title {
           font-weight: normal;
+          padding: 8px 0;
 
           &::after {
             margin-top: 6px !important;
@@ -535,6 +554,13 @@ kbd {
 
       &.active {
         border-bottom: 1px solid $border;
+      }
+
+      .feed .favicon {
+        border-radius: 3px;
+        background-color: $md-gray-300;
+        margin: 7px 8px 7px 0;
+        padding: 1px;
       }
     }
   }
@@ -587,6 +613,7 @@ kbd {
 // ! Slider ===========================
 // ====================================
 
+// ! slide-out
 #slider {
   background-color: $main-bg;
 }
@@ -598,27 +625,79 @@ kbd {
 // ! nav_menu toolbar
 .nav_menu {
   text-align: center;
-  border-bottom: 1px solid $border;
-  margin-bottom: 0.5rem;
-  padding: 10px 0;
+  // border-bottom: 1px solid $border;
+  margin-bottom: 0.2rem;
+  padding: 1rem 0;
+
+  .group {
+    margin: 0 1px;
+
+    .btn {
+      border-top: 1px solid $border;
+      border-bottom: 1px solid $border;
+
+      &.toggle_aside,
+      &#toggle-order,
+      &#actualize {
+        border-right: 1px solid $border;
+        border-left: 1px solid $border;
+        border-radius: 5px;
+      }
+
+      &.toggle_aside .icon {
+        width: 24px;
+        height: auto;
+      }
+
+      &.toggle_aside:hover .icon {
+        opacity: 1;
+      }
+    }
+
+    &#nav_menu_actions {
+
+      .btn:first-child {
+        border-left: 1px solid $border;
+        border-radius: 5px 0 0 5px;
+      }
+
+      .dropdown a {
+        border-right: 1px solid $border;
+        border-radius: 0 5px 5px 0;
+      }
+    }
+
+    &#nav_menu_views {
+
+      .btn:first-child {
+        border-left: 1px solid $border;
+        border-radius: 5px 0 0 5px;
+      }
+
+      .btn:last-child {
+        border-right: 1px solid $border;
+        border-radius: 0 5px 5px 0;
+      }
+    }
+  }
 
   .btn {
-    border-radius: 5px;
-    margin: 0 1px;
     @media (max-width: 840px) {
       margin: 5px 10px;
     }
 
     &.active {
-      background-color: $main-bg-light;
+      background-color: rgba($main-bg-light, 0.5);
     }
 
     &:hover {
+      border-color: $gravity-blue-color-base !important;
       background-color: $gravity-blue-color-base;
     }
   }
 
   .stick {
+    border-style: none;
     @media (max-width: 840px) {
       margin: 0 10px;
     }
@@ -632,49 +711,33 @@ kbd {
     #mark-read-menu {
       border-radius: 5px;
 
-      .read_all.btn.confirm {
+      .read_all.btn {
         color: $text-color;
-        border-style: none;
+        border: 1px solid $border-light;
         border-radius: 5px 0 0 5px !important;
         background-color: $main-bg-light;
-        margin: 0;
-        transition: background-color 0.5s ease;
-
-        &:hover {
-          background-color: $gravity-blue-color-base;
-          transition: background-color 0.25s ease;
-        }
-      }
-
-      .dropdown-toggle {
-        border: 1px solid $border;
-        border-left-style: none;
-        border-radius: 0 5px 5px 0;
         margin: 0;
 
         &:hover {
           border-color: $gravity-blue-color-base;
-          transition: background-color 0.25s ease;
+          background-color: $gravity-blue-color-base;
         }
       }
-    }
-  }
 
-  .search {
-    @media (max-width: 840px) {
-      display: inline-block;
-      max-width: 97%;
-    }
+      .dropdown-toggle {
+        border: 1px solid $border-light;
+        border-left-style: none;
+        border-radius: 0 5px 5px 0 !important;
+        background-color: $main-bg-light;
+        margin: 0;
 
-    .search input {
-      @media (max-width: 840px) {
-        width: 90px;
-        max-width: 97%;
-      }
+        &:hover {
+          border-color: $gravity-blue-color-base;
+          background-color: $gravity-blue-color-base;
 
-      &:focus {
-          @media (max-width: 840px) {
-          width: 400px;
+          .icon {
+            opacity: 1;
+          }
         }
       }
     }
@@ -691,7 +754,6 @@ kbd {
       height: auto;
     }
 
-    *:hover .icon,
     .btn.active .icon {
       opacity: 1;
     }
@@ -714,8 +776,11 @@ kbd {
 #nav_entries {
   line-height: 3;
   text-align: center;
-  margin: 0;
+  border-top: 1px solid $border;
+  background-color: rgba($main-bg, 0.5);
+  backdrop-filter: blur(10px);
   table-layout: fixed;
+  margin: 0;
 }
 
 // ! Pagination
@@ -853,6 +918,10 @@ main {
 
     a {
       color: $link-color-light;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
