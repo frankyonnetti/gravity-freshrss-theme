@@ -959,9 +959,8 @@ main {
   }
 
   .website {
-    display: none;
-    @media #{$breakpoint-md-up} {
-      display: table-cell;
+    @media (max-width: 840px) {
+      display: none;
     }
 
     a {
