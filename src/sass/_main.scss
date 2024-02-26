@@ -1014,11 +1014,28 @@ main {
   padding: 20px 10px;
 
   header {
-    border-bottom: 1px solid $md-gray-700;
+    position: relative;
     margin-bottom: 1rem;
-    padding-right: 0;
     padding-bottom: 1rem;
-    padding-left: 0;
+
+    &::after {
+      content: "";
+      background-color: $md-gray-700;
+      position: absolute;
+      bottom: 0;
+      left: 3rem;
+      width: calc(100% - 6rem);
+      height: 1px;
+    }
+  }
+
+  .date {
+
+    sup {
+      font-size: inherit;
+      display: none;
+      vertical-align: unset;
+    }
   }
 
   .title {
@@ -1027,11 +1044,6 @@ main {
 
   .list-tags .link-tag {
     color: $md-gray-400;
-  }
-
-  .text {
-    padding-right: 0;
-    padding-left: 0;
   }
 
   hr {
