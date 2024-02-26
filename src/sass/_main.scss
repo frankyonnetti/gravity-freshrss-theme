@@ -498,7 +498,8 @@ kbd {
   margin: 10px 0;
 
   .tree-folder.category {
-    border-top: 2px solid $border;
+    border-top: 1px solid rgba($border, 0.5);
+    margin-top: 0.4rem;
 
     .tree-folder-title {
       font-size: rem(14);
@@ -528,6 +529,7 @@ kbd {
     &.important,
     &.favorites {
       border-top-style: none;
+      margin-top: 0;
 
       .title {
         color: $md-gray-100;
@@ -929,7 +931,7 @@ main {
 
 // ! Feed articles (flux)
 #stream:not(.reader) .flux {
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid rgba($border, 0.5);
 
   a {
     color: $link-color-light;
