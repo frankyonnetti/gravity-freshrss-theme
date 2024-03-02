@@ -100,10 +100,57 @@ textarea {
   background-color: $main-bg;
 }
 
+input[type=checkbox] {
+  /* Remove most all native input styles */
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid $md-gray-700;
+  background-color: $md-gray-800;
+  position: relative;
+  width: 18px !important;
+  height: 18px !important;
+  transform: translateY(-2px);
+
+  &::before {
+    content: "";
+    // background-color: CanvasText; /* Windows High Contrast Mode */
+    background: url("icons/check.svg") no-repeat center;
+    display: block;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    transform: scale(0);
+    transform-origin: center;
+    transition: 120ms transform ease-in-out;
+  }
+
+  &:checked::before {
+    transform: scale(1);
+  }
+
+  &:focus-visible {
+    outline: 1px solid $gravity-blue-color-light;
+  }
+
+  &:disabled {
+    border-color: $md-gray-800;
+    background-color: $main-bg;
+    cursor: not-allowed;
+  }
+}
+
 select {
   color: $white;
   border: 1px solid $border-light;
   background-color: $main-bg;
+
+  &:focus-visible {
+    outline: 1px solid $gravity-blue-color-light;
+    outline-offset: -1px;
+  }
 }
 
 option {
@@ -121,7 +168,8 @@ option {
 			}
 	}
 
-  .btn.btn-attention {
+  .btn.btn-attention,
+  .btn-important {
     @include buttonbtn ($white, $gravity-blue-color-light, $gravity-blue-color-base);
   }
 
@@ -592,7 +640,7 @@ kbd {
 
       .feed .favicon {
         border-radius: 3px;
-        background-color: $md-gray-300;
+        background-color: $md-gray-100;
         margin: 7px 8px 7px 0;
         padding: 1px;
       }
@@ -854,6 +902,7 @@ kbd {
   .stream-footer-inner {
     color: $md-gray-400;
     font-size: rem(14);
+    padding-top: 2rem;
 
     #bigMarkAsRead {
       text-align: center;
@@ -997,6 +1046,35 @@ main {
   .bottom {
     font-size: rem(13);
     text-align: center;
+
+    a,
+    .date {
+      color: $md-gray-500;
+
+    }
+
+    .icon {
+      opacity: 0.5;
+    }
+
+    .dropdown-menu.dropdown-menu-scrollable {
+
+      .dropdown-header {
+        padding: 6px 8px;
+      }
+
+      .stick {
+
+        input {
+          border-right-style: none;
+          border-radius: 5px 0 0 5px;
+        }
+
+        .btn {
+          border-radius: 0 5px 5px 0;
+        }
+      }
+    }
   }
 }
 

@@ -17,7 +17,8 @@
     "build": "npm run style && npm run postcss && npm run svgo",
     "onchange:style": "nodemon --watch ./src/sass/ --ext scss --exec 'npm run style' --quiet",
     "onchange:svgo": "nodemon --watch ./src/icons --ext svg --exec 'npm run svgo' --quiet",
-    "watch": "concurrently --raw --kill-others 'npm run onchange:style' 'npm run onchange:svgo'"
+    "watch": "concurrently --raw --kill-others 'npm run onchange:style' 'npm run onchange:svgo'",
+    "upgrade": "npx ncu --upgrade"
   },
   "browserslist": [
     "> 0.2%",
@@ -30,6 +31,7 @@
     "browser-sync": "^3.0.2",
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.3",
+    "npm-check-updates": "^16.14.15",
     "postcss": "^8.4.33",
     "postcss-cli": "^11.0.0",
     "sass": "^1.70.0",
