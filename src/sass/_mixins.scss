@@ -17,6 +17,7 @@
 @mixin btn {
   font-size: rem(14);
   line-height: 1.7;
+  font-weight: normal;
   vertical-align: middle;
   margin: 0;
   padding: 5px 10px;
@@ -28,16 +29,14 @@
   }
 }
 
-@mixin buttonbtn($color: $white, $border-color: $border-light, $bg-color: $main-bg-light) {
+@mixin buttonbtn {
   @include btn;
-  color: $color;
-  border: 1px solid $border-color;
+  border-width: 1px;
+  border-style: solid;
   border-radius: 5px;
-  background-color: $bg-color;
   transition: color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
 
   &:hover {
-    background-color: color.adjust($bg-color, $lightness: 5%);
     transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
   }
 }

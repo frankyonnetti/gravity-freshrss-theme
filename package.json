@@ -9,15 +9,15 @@
     "url": ""
   },
   "scripts": {
-    "serve": "browser-sync start 'Gravity' -w",
-    "style": "sass --style=compressed --error-css --source-map ./src/sass/gravity.scss ./Gravity/gravity.css",
-    "postcss": "postcss ./Gravity/gravity.css --use autoprefixer --map --replace",
+    "style": "sass --style=compressed --error-css --source-map ./src/sass/build.scss ./Gravity/build.css",
+    "postcss": "postcss ./Gravity/build.css --use autoprefixer --map --replace",
+    "color": "node ./build.js",
     "svgo": "svgo -f ./src/icons -o ./Gravity/icons --config ./svgo.config.js",
-    "build:style": "npm run style && npm run postcss",
-    "build": "npm run style && npm run postcss && npm run svgo",
-    "onchange:style": "nodemon --watch ./src/sass/ --ext scss --exec 'npm run style' --quiet",
+    "build:style": "npm run style && npm run postcss && npm run color",
+    "build": "npm run build:style && npm run svgo",
+    "onchange:style": "nodemon --watch ./src/sass/ --ext scss --exec 'npm run build:style' --quiet",
     "onchange:svgo": "nodemon --watch ./src/icons --ext svg --exec 'npm run svgo' --quiet",
-    "watch": "concurrently --raw --kill-others 'npm run onchange:style' 'npm run onchange:svgo'",
+    "watch": "concurrently --raw --kill-others 'npm run onchange:style'",
     "upgrade": "npx ncu --upgrade"
   },
   "browserslist": [
@@ -28,7 +28,6 @@
   ],
   "devDependencies": {
     "autoprefixer": "^10.4.17",
-    "browser-sync": "^3.0.2",
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.3",
     "npm-check-updates": "^16.14.15",

@@ -35,11 +35,24 @@ h2 {
 
 button.btn {
   @include buttonbtn;
+  color: $white;
+  border-color: $border-light;
+  background-color: $main-bg-light;
+
+  &:hover {
+    background-color: $md-gray-700;
+  }
 }
 
-.btn-important {
-  @include buttonbtn ($white, $gravity-blue-color-light, $gravity-blue-color-base);
-  font-weight: normal;
+button.btn.btn-important {
+  @include buttonbtn;
+  color: --color_text;
+  border-color: --color_light;
+  background-color: --color_dark;
+
+  &:hover {
+    background-color: --color_light;
+  }
 }
 
 .btn.toggle-password .icon {
@@ -100,6 +113,16 @@ textarea {
   background-color: $main-bg;
 }
 
+input[type=text],
+input[type=number],
+input[type=url] {
+
+  &:focus-visible {
+    outline: 1px solid --color_light;
+    outline-offset: -1px;
+  }
+}
+
 input[type=checkbox] {
   /* Remove most all native input styles */
   -webkit-appearance: none;
@@ -132,7 +155,7 @@ input[type=checkbox] {
   }
 
   &:focus-visible {
-    outline: 1px solid $gravity-blue-color-light;
+    outline: 1px solid --color_light;
   }
 
   &:disabled {
@@ -143,12 +166,12 @@ input[type=checkbox] {
 }
 
 select {
-  color: $white;
+  color: --color_text;
   border: 1px solid $border-light;
   background-color: $main-bg;
 
   &:focus-visible {
-    outline: 1px solid $gravity-blue-color-light;
+    outline: 1px solid --color_light;
     outline-offset: -1px;
   }
 }
@@ -170,7 +193,14 @@ option {
 
   .btn.btn-attention,
   .btn-important {
-    @include buttonbtn ($white, $gravity-blue-color-light, $gravity-blue-color-base);
+    @include buttonbtn;
+    color: --color_text;
+    border-color: --color_light;
+    background-color: --color_base;
+
+    &:hover {
+      background-color: --color-dark;
+    }
   }
 
 	.group-name {
@@ -222,20 +252,20 @@ kbd {
 
 .alert-warn {
   color: $white;
-  border: 1px solid $gravity-blue-color-light;
-  background-color: rgba($gravity-blue-color-light, 0.5);
+  border: 1px solid $alert-blue-color-light;
+  background-color: rgba($alert-blue-color-light, 0.5);
 }
 
 .alert-success {
   color: $white;
-  border: 1px solid $gravity-green-color-light;
-  background-color: rgba($gravity-green-color-light, 0.5);
+  border: 1px solid $alert-green-color-light;
+  background-color: rgba($alert-green-color-light, 0.5);
 }
 
 .alert-error {
   color: $white;
-  border: 1px solid $gravity-red-color-light;
-  background-color: rgba($gravity-red-color-light, 0.5);
+  border: 1px solid $alert-red-color-light;
+  background-color: rgba($alert-red-color-light, 0.5);
 }
 
 // ! Notifications
@@ -262,16 +292,16 @@ kbd {
 
   &.good {
     color: $white;
-    border: 1px solid $gravity-green-color-light;
-    background-color: rgba($gravity-green-color-light, 0.5);
+    border: 1px solid $alert-green-color-light;
+    background-color: rgba($alert-green-color-light, 0.5);
 
     // a.close:hover {}
   }
 
   &.bad {
     color: $white;
-    border: 1px solid $gravity-red-color-light;
-    background-color: rgba($gravity-red-color-light, 0.5);
+    border: 1px solid $alert-red-color-light;
+    background-color: rgba($alert-red-color-light, 0.5);
 
     // a.close:hover {}
   }
@@ -344,7 +374,8 @@ kbd {
       padding: 6px 8px;
 
       &:hover {
-        background-color: $gravity-blue-color-base;
+        color: --color_text;
+        background-color: --color_base;
       }
     }
 
@@ -445,7 +476,8 @@ kbd {
         background-color: $sideBar-background;
 
         &:hover {
-          background-color: $gravity-blue-color-base;
+          color: --color_text;
+          background-color: --color_base;
 
           .icon {
             opacity: 1;
@@ -479,8 +511,9 @@ kbd {
       background-color: $main-bg-light;
 
       &:hover {
-        border-color: $gravity-blue-color-base;
-        background-color: $gravity-blue-color-base;
+        color: --color_text;
+        border-color: --color_dark;
+        background-color: --color_dark;
       }
     }
 
@@ -495,8 +528,13 @@ kbd {
       }
 
       &:hover {
-        border-color: $gravity-blue-color-base;
-        background-color: $gravity-blue-color-base;
+        color: --color_text;
+        border-color: --color_dark;
+        background-color: --color_dark;
+
+        .icon {
+          filter: --color_filter;
+        }
       }
     }
 
@@ -587,11 +625,11 @@ kbd {
 
         .icon {
           opacity: 1;
-          filter: brightness(0) saturate(100%) invert(46%) sepia(72%) saturate(2025%) hue-rotate(194deg) brightness(103%) contrast(100%);
+          filter: --color_filter_color;
         }
 
         .title {
-          color: $gravity-blue-color-light;
+          color: --color_light;
         }
       }
     }
@@ -612,7 +650,7 @@ kbd {
 
         &.active {
           background-color: $main-bg-light;
-          box-shadow: inset -3px 0 0 0 $gravity-blue-color-base;
+          box-shadow: inset -3px 0 0 0 --color_dark;
         }
 
         .dropdown.no-mobile {
@@ -686,7 +724,8 @@ kbd {
 
     a:hover,
     &.active a {
-      background-color: $gravity-blue-color-base;
+      color: --color_text;
+      background-color: --color_dark;
     }
   }
 }
@@ -777,8 +816,13 @@ kbd {
     }
 
     &:hover {
-      border-color: $gravity-blue-color-base !important;
-      background-color: $gravity-blue-color-base;
+      color: --color_text;
+      border-color: --color_dark !important;
+      background-color: --color_dark;
+
+      .icon {
+        filter: --color_filter;
+      }
     }
   }
 
@@ -796,8 +840,9 @@ kbd {
         margin: 0;
 
         &:hover {
-          border-color: $gravity-blue-color-base;
-          background-color: $gravity-blue-color-base;
+          color: --color_text;
+          border-color: --color_dark;
+          background-color: --color_dark;
         }
       }
 
@@ -809,11 +854,13 @@ kbd {
         margin: 0;
 
         &:hover {
-          border-color: $gravity-blue-color-base;
-          background-color: $gravity-blue-color-base;
+          color: --color_text;
+          border-color: --color_dark;
+          background-color: --color_dark;
 
           .icon {
             opacity: 1;
+            filter: --color_filter;
           }
         }
       }
@@ -892,7 +939,7 @@ kbd {
 
 #load_more.loading,
 #load_more.loading:hover {
-  font-size: 0;
+  background: $main-bg url("loader.gif") no-repeat center;
 }
 
 // ! Load more
@@ -906,25 +953,29 @@ kbd {
 
     #bigMarkAsRead {
       text-align: center;
-      text-decoration: none;
-      padding: 0 1rem;
+      margin: 1.5rem auto;
+      padding: 0;
+      width: calc(100% - 2rem);
+      max-width: 332px;
 
-      .bigTick {
+      .bigTick,
+      br {
         display: none;
       }
 
       .markAllRead {
-        color: $md-gray-200;
+        @include buttonbtn;
+        color: --color_text;
         font-size: rem(16);
-        border: 1px solid $border;
-        border-radius: 5px;
-        display: inline-block;
-        padding: 1rem;
-        transition: border 0.5s ease;
+        border-color: $border-light;
+        background-color: $main-bg;
+        display: block;
+        padding: 0.75rem 1rem;
 
         &:hover {
-          border-color: $md-gray-400;
-          transition: border 0.25s ease;
+          color: --color_text;
+          border-color: --color_light;
+          background-color: --color_dark;
         }
       }
     }
@@ -939,7 +990,7 @@ main {
 
   a,
   button.as-link {
-  color: $gravity-blue-color-light;
+  color: --color_light;
   }
 }
 
@@ -966,7 +1017,7 @@ main {
     font-size: rem(26);
     text-align: left;
     display: none;
-    top: -2px;
+    top: -4px;
     right: auto;
     left: 10px;
     padding: 0 10px 0 0;
@@ -1172,7 +1223,7 @@ main {
 
     .icon {
       opacity: 1;
-      filter: brightness(0) saturate(100%) invert(46%) sepia(1%) saturate(0%) hue-rotate(52deg) brightness(99%) contrast(84%);
+      filter: --color_filter_color;
     }
 
     .list-tags .link-tag {
@@ -1194,7 +1245,7 @@ main {
       text-decoration: underline;
 
       &:hover {
-        color: $gravity-blue-color-light;
+        color: --color_light;
       }
     }
 
@@ -1234,7 +1285,7 @@ main {
 
     .configure {
       position: absolute;
-      top: 0.6rem;
+      top: 0.9rem;
       left: 0.5rem;
     }
 
