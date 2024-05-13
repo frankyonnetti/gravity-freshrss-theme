@@ -1,3 +1,12 @@
+:root {
+  --color_base: #8e8e93;
+  --color_light: #adadb1;
+  --color_dark: #8e8e93;
+  --color_text: #ffffff;
+  --color_filter_color: brightness(0) saturate(100%) invert(61%) sepia(57%) saturate(0%) hue-rotate(41deg) brightness(96%) contrast(115%);
+  --color_filter: none;
+}
+
 @charset "UTF-8";
 
 // ====================================
@@ -46,12 +55,12 @@ button.btn {
 
 button.btn.btn-important {
   @include buttonbtn;
-  color: --color_text;
-  border-color: --color_light;
-  background-color: --color_dark;
+  color: var(--color_text);
+  border-color: var(--color_light);
+  background-color: var(--color_dark);
 
   &:hover {
-    background-color: --color_light;
+    background-color: var(--color_light);
   }
 }
 
@@ -81,7 +90,7 @@ form th {
 
 // ! Forms
 legend {
-  font-size: rem(22);
+  font-size: 22px;
   margin: 20px 0 5px;
   padding: 5px 0;
 }
@@ -107,10 +116,13 @@ textarea {
 
 input,
 textarea {
-  @include placeholder;
   color: $white;
   border: 1px solid $border-light;
   background-color: $main-bg;
+
+  &::placeholder {
+    color: $text-color;
+  }
 }
 
 input[type=text],
@@ -118,7 +130,7 @@ input[type=number],
 input[type=url] {
 
   &:focus-visible {
-    outline: 1px solid --color_light;
+    outline: 1px solid var(--color_light);
     outline-offset: -1px;
   }
 }
@@ -155,7 +167,7 @@ input[type=checkbox] {
   }
 
   &:focus-visible {
-    outline: 1px solid --color_light;
+    outline: 1px solid var(--color_light);
   }
 
   &:disabled {
@@ -166,12 +178,12 @@ input[type=checkbox] {
 }
 
 select {
-  color: --color_text;
+  color: $white;
   border: 1px solid $border-light;
   background-color: $main-bg;
 
   &:focus-visible {
-    outline: 1px solid --color_light;
+    outline: 1px solid var(--color_light);
     outline-offset: -1px;
   }
 }
@@ -194,9 +206,9 @@ option {
   .btn.btn-attention,
   .btn-important {
     @include buttonbtn;
-    color: --color_text;
-    border-color: --color_light;
-    background-color: --color_base;
+    color: var(--color_text);
+    border-color: var(--color_light);
+    background-color: var(--color_base);
 
     &:hover {
       background-color: --color-dark;
@@ -233,7 +245,7 @@ kbd {
 
 // ! Alerts
 .alert {
-  font-size: rem(14);
+  font-size: 14px;
   border-radius: 5px;
   backdrop-filter: blur(10px);
 
@@ -247,7 +259,7 @@ kbd {
 }
 
 .alert-head {
-  font-size: rem(18);
+  font-size: 18px;
 }
 
 .alert-warn {
@@ -309,7 +321,7 @@ kbd {
 
 // ! New article notification
 #new-article {
-  font-size: rem(14);
+  font-size: 14px;
   text-align: center;
 
   > a {
@@ -334,7 +346,7 @@ kbd {
 
 // ! Dropdown
 .dropdown-menu {
-  font-size: rem(13);
+  font-size: 13px;
   text-align: left;
   border-color: rgba($white, 0.15);
   border-radius: 8px;
@@ -374,8 +386,8 @@ kbd {
       padding: 6px 8px;
 
       &:hover {
-        color: --color_text;
-        background-color: --color_base;
+        color: var(--color_text);
+        background-color: var(--color_base);
       }
     }
 
@@ -450,7 +462,6 @@ kbd {
       }
 
       input {
-        @include placeholder;
         border: 1px solid $border-light;
         border-right-style: none;
         border-radius: 5px 0 0 5px;
@@ -467,6 +478,10 @@ kbd {
             width: 400px;
           }
         }
+
+        &::placeholder {
+          color: $text-color;
+        }
       }
 
       button {
@@ -476,8 +491,8 @@ kbd {
         background-color: $sideBar-background;
 
         &:hover {
-          color: --color_text;
-          background-color: --color_base;
+          color: var(--color_text);
+          background-color: var(--color_base);
 
           .icon {
             opacity: 1;
@@ -511,9 +526,9 @@ kbd {
       background-color: $main-bg-light;
 
       &:hover {
-        color: --color_text;
-        border-color: --color_dark;
-        background-color: --color_dark;
+        color: var(--color_text);
+        border-color: var(--color_dark);
+        background-color: var(--color_dark);
       }
     }
 
@@ -528,12 +543,12 @@ kbd {
       }
 
       &:hover {
-        color: --color_text;
-        border-color: --color_dark;
-        background-color: --color_dark;
+        color: var(--color_text);
+        border-color: var(--color_dark);
+        background-color: var(--color_dark);
 
         .icon {
-          filter: --color_filter;
+          filter: var(--color_filter);
         }
       }
     }
@@ -554,7 +569,7 @@ kbd {
 
 // ! Aside main page (categories)
 .aside_feed .tree-folder-title > .title:not([data-unread="0"])::after {
-  font-size: rem(14);
+  font-size: 14px;
   line-height: 1.5;
   position: absolute;
   right: 0;
@@ -588,7 +603,7 @@ kbd {
     margin-top: 0.4rem;
 
     .tree-folder-title {
-      font-size: rem(14);
+      font-size: 14px;
       line-height: 2.5;
       position: relative;
       padding: 5px 10px 0;
@@ -625,11 +640,11 @@ kbd {
 
         .icon {
           opacity: 1;
-          filter: --color_filter_color;
+          filter: var(--color_filter_color);
         }
 
         .title {
-          color: --color_light;
+          color: var(--color_light);
         }
       }
     }
@@ -641,7 +656,7 @@ kbd {
     .tree-folder-items {
 
       > .item {
-        font-size: rem(13);
+        font-size: 13px;
         padding: 0 12px;
 
         &:hover {
@@ -650,7 +665,7 @@ kbd {
 
         &.active {
           background-color: $main-bg-light;
-          box-shadow: inset -3px 0 0 0 --color_dark;
+          box-shadow: inset -3px 0 0 0 var(--color_dark);
         }
 
         .dropdown.no-mobile {
@@ -708,7 +723,7 @@ kbd {
   padding: 1rem 2rem;
 
   .item {
-    font-size: rem(14);
+    font-size: 14px;
     line-height: 2.5;
     margin-bottom: 1px;
 
@@ -724,8 +739,8 @@ kbd {
 
     a:hover,
     &.active a {
-      color: --color_text;
-      background-color: --color_dark;
+      color: var(--color_text);
+      background-color: var(--color_dark);
     }
   }
 }
@@ -816,12 +831,12 @@ kbd {
     }
 
     &:hover {
-      color: --color_text;
+      color: var(--color_text);
       border-color: --color_dark !important;
-      background-color: --color_dark;
+      background-color: var(--color_dark);
 
       .icon {
-        filter: --color_filter;
+        filter: var(--color_filter);
       }
     }
   }
@@ -840,9 +855,9 @@ kbd {
         margin: 0;
 
         &:hover {
-          color: --color_text;
-          border-color: --color_dark;
-          background-color: --color_dark;
+          color: var(--color_text);
+          border-color: var(--color_dark);
+          background-color: var(--color_dark);
         }
       }
 
@@ -854,13 +869,13 @@ kbd {
         margin: 0;
 
         &:hover {
-          color: --color_text;
-          border-color: --color_dark;
-          background-color: --color_dark;
+          color: var(--color_text);
+          border-color: var(--color_dark);
+          background-color: var(--color_dark);
 
           .icon {
             opacity: 1;
-            filter: --color_filter;
+            filter: var(--color_filter);
           }
         }
       }
@@ -910,11 +925,11 @@ kbd {
 
 // ! Pagination
 .pagination {
-  font-size: rem(13);
+  font-size: 13px;
   text-align: center;
 
   .item.pager-current {
-    font-size: rem(24);
+    font-size: 24px;
     font-weight: bold;
   }
 
@@ -948,7 +963,7 @@ kbd {
 
   .stream-footer-inner {
     color: $md-gray-400;
-    font-size: rem(14);
+    font-size: 14px;
     padding-top: 2rem;
 
     #bigMarkAsRead {
@@ -965,17 +980,17 @@ kbd {
 
       .markAllRead {
         @include buttonbtn;
-        color: --color_text;
-        font-size: rem(16);
+        color: var(--color_text);
+        font-size: 16px;
         border-color: $border-light;
         background-color: $main-bg;
         display: block;
         padding: 0.75rem 1rem;
 
         &:hover {
-          color: --color_text;
-          border-color: --color_light;
-          background-color: --color_dark;
+          color: var(--color_text);
+          border-color: var(--color_light);
+          background-color: var(--color_dark);
         }
       }
     }
@@ -990,14 +1005,14 @@ main {
 
   a,
   button.as-link {
-  color: --color_light;
+  color: var(--color_light);
   }
 }
 
 // ! Day
 #stream .day {
   color: $md-gray-500;
-  font-size: rem(14);
+  font-size: 14px;
   text-align: right;
   border-bottom: 2px solid $border-light;
   position: relative;
@@ -1014,7 +1029,7 @@ main {
 
   .name {
     color: $white;
-    font-size: rem(26);
+    font-size: 26px;
     text-align: left;
     display: none;
     top: -4px;
@@ -1080,7 +1095,7 @@ main {
   }
 
   .item.date {
-    font-size: rem(11);
+    font-size: 11px;
     width: 200px;
 
     time sup {
@@ -1095,7 +1110,7 @@ main {
   }
 
   .bottom {
-    font-size: rem(13);
+    font-size: 13px;
     text-align: center;
 
     a,
@@ -1127,14 +1142,23 @@ main {
       }
     }
   }
+
+  .text a {
+    color: var(--color_light);
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .flux_header {
-  font-size: rem(13);
+  font-size: 13px;
   cursor: pointer;
 
   .title {
-    font-size: rem(14);
+    font-size: 14px;
   }
 }
 
@@ -1181,7 +1205,7 @@ main {
   }
 
   pre {
-    font-size: rem(14);
+    font-size: 14px;
     overflow: auto;
     margin: 10px auto;
     padding: 10px 20px;
@@ -1223,7 +1247,7 @@ main {
 
     .icon {
       opacity: 1;
-      filter: --color_filter_color;
+      filter: var(--color_filter_color);
     }
 
     .list-tags .link-tag {
@@ -1245,7 +1269,7 @@ main {
       text-decoration: underline;
 
       &:hover {
-        color: --color_light;
+        color: var(--color_light);
       }
     }
 
@@ -1300,7 +1324,7 @@ main {
     max-height: 260px;
 
     .item {
-      font-size: rem(14);
+      font-size: 14px;
       line-height: 2.5;
       padding: 0 10px;
     }

@@ -1,21 +1,5 @@
-// stylelint-disable selector-no-vendor-prefix
-
-// Convert px to rem
-@function rem($pixels, $context: 16) {
-  @return math.div($pixels, $context) * 1rem;
-}
-
-// Style placeholder text
-@mixin placeholder($color: $text-color) {
-  &::-webkit-input-placeholder { color: $color; }
-  &::-moz-placeholder { color: $color; }
-  &:-ms-input-placeholder { color: $color; }
-  &:-moz-placeholder { color: $color; }
-  &::placeholder { color: $color; }
-}
-
 @mixin btn {
-  font-size: rem(14);
+  font-size: 14px;
   line-height: 1.7;
   font-weight: normal;
   vertical-align: middle;

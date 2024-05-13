@@ -9,15 +9,16 @@
     "url": ""
   },
   "scripts": {
-    "style": "sass --style=compressed --error-css --source-map ./src/sass/build.scss ./Gravity/build.css",
-    "postcss": "postcss ./Gravity/build.css --use autoprefixer --map --replace",
+    "style:sass": "sass --error-css --style=compressed --embed-source-map ./src/sass/style.scss",
+    "style:perl": "perl -pe 's|file:(.+?)/src|../src|g'",
+    "style:postcss": "postcss --config './postcss.config.js' -o ./Gravity/gravity.css",
     "color": "node ./build.js",
+    "style": "bun style:sass | bun style:perl | bun style:postcss",
     "svgo": "svgo -f ./src/icons -o ./Gravity/icons --config ./svgo.config.js",
-    "build:style": "npm run style && npm run postcss && npm run color",
-    "build": "npm run build:style && npm run svgo",
-    "onchange:style": "nodemon --watch ./src/sass/ --ext scss --exec 'npm run build:style' --quiet",
-    "onchange:svgo": "nodemon --watch ./src/icons --ext svg --exec 'npm run svgo' --quiet",
-    "watch": "concurrently --raw --kill-others 'npm run onchange:style'",
+    "build": "npm run style && npm run color && npm run svgo",
+    "watch:style": "nodemon --watch ./src/sass/ --ext scss --exec 'npm run style' --quiet",
+    "watch:svgo": "nodemon --watch ./src/icons --ext svg --exec 'npm run svgo' --quiet",
+    "watch": "concurrently --raw --kill-others 'npm run watch:style'",
     "upgrade": "npx ncu --upgrade"
   },
   "browserslist": [
@@ -27,16 +28,17 @@
     "not dead"
   ],
   "devDependencies": {
-    "autoprefixer": "^10.4.17",
+    "autoprefixer": "^10.4.19",
     "concurrently": "^8.2.2",
-    "nodemon": "^3.0.3",
-    "npm-check-updates": "^16.14.15",
-    "postcss": "^8.4.33",
+    "nodemon": "^3.1.0",
+    "npm-check-updates": "^16.14.20",
+    "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
-    "sass": "^1.70.0",
-    "stylelint": "^16.2.0",
-    "stylelint-config-sass-guidelines": "^11.0.0",
+    "postcss-pxtorem": "^6.1.0",
+    "sass": "^1.77.1",
+    "stylelint": "^16.5.0",
+    "stylelint-config-sass-guidelines": "^11.1.0",
     "stylelint-order": "^6.0.4",
-    "svgo": "^3.2.0"
+    "svgo": "^3.3.2"
   }
 }
