@@ -1144,7 +1144,7 @@ main {
   }
 
   .text a {
-    color: var(--color_light);
+    color: $white;
     text-decoration: underline;
 
     &:hover {

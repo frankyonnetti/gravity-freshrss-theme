@@ -12,7 +12,6 @@
     "style:sass": "sass --error-css --style=compressed --embed-source-map ./src/sass/style.scss",
     "style:perl": "perl -pe 's|file:(.+?)/src|../src|g'",
     "style:postcss": "postcss --config './postcss.config.js' -o ./Gravity/gravity.css",
-    "color": "node ./build.js",
     "style": "bun style:sass | bun style:perl | bun style:postcss",
     "svgo": "svgo -f ./src/icons -o ./Gravity/icons --config ./svgo.config.js",
     "build": "npm run style && npm run color && npm run svgo",
