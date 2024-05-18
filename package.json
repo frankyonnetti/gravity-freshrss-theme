@@ -10,15 +10,14 @@
   },
   "scripts": {
     "style:sass": "sass --error-css --style=compressed --embed-source-map ./src/sass/style.scss",
-    "style:perl": "perl -pe 's|file:(.+?)/src|../src|g'",
+    "style:replace": "perl -pe 's|file:(.+?)/src|../src|g'",
     "style:postcss": "postcss --config './postcss.config.js' -o ./Gravity/gravity.css",
-    "style": "bun style:sass | bun style:perl | bun style:postcss",
+    "style": "bun style:sass | bun style:replace | bun style:postcss",
     "svgo": "svgo -f ./src/icons -o ./Gravity/icons --config ./svgo.config.js",
-    "build": "npm run style && npm run color && npm run svgo",
-    "watch:style": "nodemon --watch ./src/sass/ --ext scss --exec 'npm run style' --quiet",
-    "watch:svgo": "nodemon --watch ./src/icons --ext svg --exec 'npm run svgo' --quiet",
-    "watch": "concurrently --raw --kill-others 'npm run watch:style'",
-    "upgrade": "npx ncu --upgrade"
+    "build": "bun style && bun color && bun svgo",
+    "watch:style": "nodemon --watch ./src/sass/ --ext scss --exec 'bun style' --quiet",
+    "watch:svgo": "nodemon --watch ./src/icons --ext svg --exec 'bun svgo' --quiet",
+    "watch": "concurrently --raw --kill-others 'bun watch:style'"
   },
   "browserslist": [
     "> 0.2%",
@@ -30,7 +29,6 @@
     "autoprefixer": "^10.4.19",
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.0",
-    "npm-check-updates": "^16.14.20",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
     "postcss-pxtorem": "^6.1.0",

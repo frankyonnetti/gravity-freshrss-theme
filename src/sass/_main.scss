@@ -1060,6 +1060,10 @@ main {
 
     .item.title {
       font-weight: normal;
+
+      a {
+        color: $link-color-light;
+      }
     }
   }
 
@@ -1070,9 +1074,10 @@ main {
   // &.favorite:not(.current):hover .item.title {}
 
   .item.title {
+    font-weight: normal;
 
     a {
-      color: $link-color-light;
+      color: $md-gray-500;
 
       &:hover {
         text-decoration: underline;
