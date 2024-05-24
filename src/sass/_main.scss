@@ -306,16 +306,12 @@ kbd {
     color: $white;
     border: 1px solid $alert-green-color-light;
     background-color: rgba($alert-green-color-light, 0.5);
-
-    // a.close:hover {}
   }
 
   &.bad {
     color: $white;
     border: 1px solid $alert-red-color-light;
     background-color: rgba($alert-red-color-light, 0.5);
-
-    // a.close:hover {}
   }
 }
 
@@ -938,13 +934,7 @@ kbd {
     font-style: italic;
     text-decoration: none;
     display: block;
-
-      // &:hover {}
   }
-
-  // &:first-child .item {}
-
-  // &:last-child .item {}
 }
 
 .content .pagination {
@@ -954,7 +944,7 @@ kbd {
 
 #load_more.loading,
 #load_more.loading:hover {
-  background: $main-bg url("loader.gif") no-repeat center;
+  background: $main-bg url("loader.gif") no-repeat center !important;
 }
 
 // ! Load more
@@ -1052,32 +1042,24 @@ main {
     color: $link-color-light;
   }
 
-  // &:hover {}
-
-  // &.current {}
-
   &.not_read {
 
-    .item.title {
-      font-weight: normal;
+    .item.title,
+    .item.titleAuthorSummaryDate {
 
       a {
         color: $link-color-light;
+        font-weight: normal;
       }
     }
   }
 
-  // &.not_read:not(.current):hover .item.title {}
-
-  // &.favorite {}
-
-  // &.favorite:not(.current):hover .item.title {}
-
-  .item.title {
-    font-weight: normal;
+  .item.title,
+  .item.titleAuthorSummaryDate {
 
     a {
       color: $md-gray-500;
+      font-weight: normal;
 
       &:hover {
         text-decoration: underline;
