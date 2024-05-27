@@ -6,7 +6,7 @@ module.exports = {
   plugins: [
     require('postcss-pxtorem')({
       rootValue: 16,
-      propList: ['*'],
+      propList: ['*', '!border*', '!box-shadow', '!outline*'],
       mediaQuery: true,
       selectorBlackList: [/^html$/, /^body$/]
     }),

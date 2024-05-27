@@ -19,91 +19,98 @@ $breakpoint-md-up: "(min-width: 841px)";
 $breakpoint-lg-up: "(min-width: 993px)";
 $breakpoint-xl-up: "(min-width: 1201px)";
 
+// ! Argyle color
+// https://web.dev/articles/building/a-color-scheme
+
+html {
+  /* brand foundation */
+  --brand-hue: 200;
+  --brand-saturation: 100%;
+  --brand-lightness: 50%;
+
+  /* light */
+  --brand-light: hsl(var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
+  --text1-light: hsl(var(--brand-hue) var(--brand-saturation) 10%);
+  --text2-light: hsl(var(--brand-hue) 30% 30%);
+  --surface1-light: hsl(var(--brand-hue) 25% 90%);
+  --surface2-light: hsl(var(--brand-hue) 20% 99%);
+  --surface3-light: hsl(var(--brand-hue) 20% 92%);
+  --surface4-light: hsl(var(--brand-hue) 20% 85%);
+  --surface-shadow-light: var(--brand-hue) 10% 20%;
+  --shadow-strength-light: 0.02;
+
+  /* dark */
+  --brand-dark: hsl(
+    var(--brand-hue)
+    calc(var(--brand-saturation) / 2)
+    calc(var(--brand-lightness) / 1.5)
+  );
+  --text1-dark: hsl(var(--brand-hue) 15% 85%);
+  --text2-dark: hsl(var(--brand-hue) 5% 65%);
+  --text3-dark: hsl(var(--brand-hue) 5% 35%);
+  --surface1-dark: hsl(var(--brand-hue) 10% 10%);
+  --surface2-dark: hsl(var(--brand-hue) 10% 15%);
+  --surface3-dark: hsl(var(--brand-hue) 5%  20%);
+  --surface4-dark: hsl(var(--brand-hue) 5% 25%);
+  --border1-dark: hsl(var(--brand-hue) 10% 15%);
+  --border2-dark: hsl(var(--brand-hue) 10% 20%);
+  --border3-dark: hsl(var(--brand-hue) 5%  25%);
+  --border4-dark: hsl(var(--brand-hue) 5% 30%);
+  --surface-shadow-dark: var(--brand-hue) 50% 3%;
+  --shadow-strength-dark: 0.8;
+}
+
+@mixin shadow {
+  border: 1px solid hsl(var(--brand-hue) 10% 50% / 15%);
+  box-shadow:
+    0 2.8px 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+    0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .01)),
+    0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+    0 22.3px 17.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .02)),
+    0 41.8px 33.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + .03)),
+    0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength))
+  ;
+}
+
+:root {
+  --brand: var(--brand-dark);
+  --text1: var(--text1-dark);
+  --text2: var(--text2-dark);
+  --text3: var(--text3-dark);
+  --surface1: var(--surface1-dark);
+  --surface2: var(--surface2-dark);
+  --surface3: var(--surface3-dark);
+  --surface4: var(--surface4-dark);
+  --border1: var(--border1-dark);
+  --border2: var(--border2-dark);
+  --border3: var(--border3-dark);
+  --border4: var(--border4-dark);
+  --surface-shadow: var(--surface-shadow-dark);
+  --shadow-strength: var(--shadow-strength-dark);
+}
+
+// @media (prefers-color-scheme: light) {
+
+//   :root {
+//     /* set defaults */
+//     --brand: var(--brand-light);
+//     --text1: var(--text1-light);
+//     --text2: var(--text2-light);
+//     --surface1: var(--surface1-light);
+//     --surface2: var(--surface2-light);
+//     --surface3: var(--surface3-light);
+//     --surface4: var(--surface4-light);
+//     --surface-shadow: var(--surface-shadow-light);
+//     --shadow-strength: var(--shadow-strength-light);
+//   }
+// }
+
 // ! colors
 
 $white: #ffffff;
 $black: #222222;
 
-$text-color: #e0e0e0;
-$link-color-light: #f5f5f5;
-
-$main-bg: #2b2b2b;
-$main-bg-light: #474747;
-$border: #474747;
-$border-light: #565657;
-
 // alerts
 $alert-blue-color-light: #3696ff;
 $alert-green-color-light: #4ddc62;
 $alert-red-color-light: #ff584e;
-
-// material color
-// https://material.io/design/color/the-color-system.html#tools-for-picking-colors
-
-$md-gray-50: #fafafa;
-$md-gray-100: #f5f5f5;
-$md-gray-200: #eeeeee;
-$md-gray-300: #e0e0e0;
-$md-gray-400: #bdbdbd;
-$md-gray-500: #9e9e9e;
-$md-gray-600: #757575;
-$md-gray-700: #616161;
-$md-gray-800: #424242;
-$md-gray-900: #212121;
-
-// ----------------------------------------------------------------------------
-
-// Gravity VS Code grays
-
-// activityBar
-$activityBar-bg: #2c2c2c;
-$activityBar-border: #151515;
-
-// badge
-$badge-foreground: #e0e0e0;
-$badge-background: #5a5a5a;
-
-// buttons
-$button-foreground: #e0e0e0;
-$button-background: #5a5a5a;
-$button-border: #5a5a5a;
-$button-hoverBackground: #727272;
-
-// editor
-$editor-background: #2b2b2b;
-$editor-foreground: #dddddd;
-$editor-lineHighlightBackground: #3d3d3d;
-$editor-foldBackground: #232323;
-
-// extensions
-$list-inactiveSelectionBackground: #353535;
-
-// panel
-$panel-background: #252525;
-
-// sidebar
-$sideBar-border: #111111;
-$sideBar-background: #1e1e1e;
-$sideBarSectionHeader-background: #2c2c2c;
-$sideBarTitle-foreground: #949494;
-
-// statusBar
-$statusBar-background: #383838;
-$statusBar-border: #222222;
-$statusBar-debuggingForeground: #e0e0e0;
-$statusBar-foreground: #969696;
-$statusBar-noFolderForeground: #e0e0e0;
-$statusBar-focusBorder: #22222200;
-$statusBarItem-prominentForeground: #e0e0e0;
-$statusBarItem-remoteForeground: #e0e0e0;
-
-// tab
-$editorGroupHeader-tabsBackground: #1e1e1e;
-$tab-activeBackground: #2b2b2b;
-$tab-border: #0d0d0d;
-$tab-inactiveBackground: #1e1e1e;
-
-// titleBar
-$titleBar-activeBackground: #383838;
-$titleBar-border: #191919;
-$titleBar-inactiveBackground: #2c2c2c;
