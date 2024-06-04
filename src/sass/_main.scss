@@ -1,10 +1,12 @@
 :root {
-  --color_base: #8e8e93;
-  --color_light: #adadb1;
-  --color_dark: #8e8e93;
+  --color_base: #98989d;
+  --color_light: #98989d;
+  --color_dark: #69696e;
   --color_text: #ffffff;
-  --color_filter_color: brightness(0) saturate(100%) invert(61%) sepia(57%) saturate(0%) hue-rotate(41deg) brightness(96%) contrast(115%);
-  --color_filter: none;
+	// background color
+  --color_filter_bg: brightness(0) saturate(100%) invert(61%) sepia(57%) saturate(0%) hue-rotate(41deg) brightness(96%) contrast(115%);
+	// forground color
+  --color_filter_fg: none;
 }
 
 @charset "UTF-8";
@@ -15,19 +17,19 @@
 
 html,
 body {
-  color: $text-color;
+  color: var(--text1);
   font-size: 16px;
   line-height: 1.15;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   -webkit-text-size-adjust: 100%;
-  background-color: $main-bg;
+  background-color: var(--surface1);
   height: 100%;
 }
 
 // ! Links
 a,
 button.as-link {
-  color: $link-color-light;
+  color: var(--text1);
   outline: none;
 }
 
@@ -45,22 +47,23 @@ h2 {
 button.btn {
   @include buttonbtn;
   color: $white;
-  border-color: $border-light;
-  background-color: $main-bg-light;
+  border-color: var(--border2);
+  background-color: var(--surface2);
 
   &:hover {
-    background-color: $md-gray-700;
+    border-color: var(--border2);
+    background-color: var(--surface3);
   }
 }
 
 button.btn.btn-important {
   @include buttonbtn;
   color: var(--color_text);
-  border-color: var(--color_light);
+  border-color: var(--color_base);
   background-color: var(--color_dark);
 
   &:hover {
-    background-color: var(--color_light);
+    background-color: var(--color_base);
   }
 }
 
@@ -68,18 +71,41 @@ button.btn.btn-important {
   opacity: 0.6;
 }
 
+.btn.btn-attention.confirm,
+.btn-important {
+	@include buttonbtn;
+	color: var(--color_text);
+	border-color: #ff5257;
+	background-color: #c33739;
+
+	&:hover {
+		background-color: #ff5257;
+	}
+}
+
 // ! Tables
 table {
   border-collapse: collapse;
 
   tr {
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid var(--border2);
   }
 
   thead tr {
-    border-bottom: 2px solid $border-light;
+    border-bottom: 2px solid var(--border2);
     background-color: rgba($white, 0.05);
   }
+}
+
+main table {
+
+	a {
+		color: $white;
+		text-decoration-thickness: 1px;
+		text-decoration-line: underline;
+		text-decoration-color: rgba($white, 0.25);
+		text-underline-offset: 2px;
+	}
 }
 
 form td,
@@ -117,11 +143,11 @@ textarea {
 input,
 textarea {
   color: $white;
-  border: 1px solid $border-light;
-  background-color: $main-bg;
+  border: 1px solid var(--border1);
+  background-color: var(--surface3);
 
   &::placeholder {
-    color: $text-color;
+    color: var(--text2);
   }
 }
 
@@ -139,8 +165,8 @@ input[type=checkbox] {
   /* Remove most all native input styles */
   -webkit-appearance: none;
   appearance: none;
-  border: 1px solid $md-gray-700;
-  background-color: $md-gray-800;
+  border: 1px solid var(--border4);
+  background-color: var(--surface4);
   position: relative;
   width: 18px !important;
   height: 18px !important;
@@ -171,16 +197,16 @@ input[type=checkbox] {
   }
 
   &:disabled {
-    border-color: $md-gray-800;
-    background-color: $main-bg;
+    border-color: var(--border2);
+    background-color: var(--surface3);
     cursor: not-allowed;
   }
 }
 
 select {
   color: $white;
-  border: 1px solid $border-light;
-  background-color: $main-bg;
+  border: 1px solid var(--border3);
+  background-color: var(--surface1);
 
   &:focus-visible {
     outline: 1px solid var(--color_light);
@@ -195,35 +221,23 @@ option {
 // ! Form group
 .form-group {
 
-	&.form-actions {
-		padding: 5px 0;
+  &.form-actions {
+    padding: 5px 0;
 
-			.btn {
-				margin: 0 10px 0 0;
-			}
-	}
-
-  .btn.btn-attention,
-  .btn-important {
-    @include buttonbtn;
-    color: var(--color_text);
-    border-color: var(--color_light);
-    background-color: var(--color_base);
-
-    &:hover {
-      background-color: --color-dark;
-    }
+      .btn {
+        margin: 0 10px 0 0;
+      }
   }
 
-	.group-name {
-		text-align: right;
-		padding: 10px 0;
-	}
+  .group-name {
+    text-align: right;
+    padding: 10px 0;
+  }
 
-	.group-controls {
-		padding: 10px 0;
-		min-height: 25px;
-	}
+  .group-controls {
+    padding: 10px 0;
+    min-height: 25px;
+  }
 }
 
 // ====================================
@@ -231,7 +245,8 @@ option {
 // ====================================
 
 #global {
-  height: calc(100% - 85px);
+  // height: calc(100% - 64px);
+  height: 100%;
 }
 
 .icon {
@@ -344,20 +359,20 @@ kbd {
 .dropdown-menu {
   font-size: 13px;
   text-align: left;
-  border-color: rgba($white, 0.15);
+  border-color: rgba($white, 0.2);
   border-radius: 8px;
-  background-color: rgba($main-bg, 0.5);
-  backdrop-filter: blur(10px);
+  background-color: rgba(var(--surface1), 0.6);
   box-shadow: 0 14px 40px 4px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.65);
   margin: 5px 0 0;
   padding: 5px 0;
+  backdrop-filter: blur(30px);
 
   &::after {
     display: none;
   }
 
   .as-link {
-    border-color: $border;
+    border-color: var(--border2);
     background-color: transparent;
   }
 
@@ -366,12 +381,12 @@ kbd {
 
     &.separator,
     &.dropdown-section {
-      border-color: rgba($white, 0.15);
+      border-color: rgba($white, 0.2);
       padding-top: 4px;
     }
 
     .dropdown-section-title {
-      color: rgba($text-color, 0.5);
+      color: rgba(var(--text2), 0.5);
       padding: 4px 10px;
     }
 
@@ -383,7 +398,7 @@ kbd {
 
       &:hover {
         color: var(--color_text);
-        background-color: var(--color_base);
+        background-color: var(--color_dark);
       }
     }
 
@@ -426,20 +441,41 @@ kbd {
   padding: 0 5px 5px;
 }
 
+@supports (scrollbar-width: thin) {
+
+  .scrollbar-thin {
+    scrollbar-color: #55595a var(--surface2);
+    scrollbar-width: thin;
+
+		&:hover {
+			scrollbar-color: #737c7e var(--surface2);
+		}
+	}
+}
+
 // ====================================
 // ! Header ===========================
 // ====================================
 
 .header {
-  border-bottom: 1px solid $border;
-  background-color: $sideBar-background;
-  height: 85px;
+  @media (min-width: 841px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    pointer-events: none;
+  }
 
   > .item {
-    text-align: center;
     vertical-align: middle;
 
     &.title {
+      @media (min-width: 841px) {
+        text-align: left;
+        padding-left: 1rem;
+        width: 50%;
+      }
 
       h1 {
         margin: 0.5em 0;
@@ -448,20 +484,41 @@ kbd {
           text-decoration: none;
         }
       }
+
+      a {
+        @media (min-width: 841px) {
+          display: block;
+          overflow-x: hidden;
+          width: 12px;
+          pointer-events: all;
+        }
+        @media #{$breakpoint-xl-up} {
+          display: inline-block;
+          width: unset;
+        }
+
+        .logo {
+          max-width: unset;
+          height: 26px;
+        }
+
+        // &:hover .logo {
+        //   filter: var(--color_filter_bg);
+        // }
+      }
     }
 
     // ! search
     &.search {
-      @media (max-width: 840px) {
-        display: inline-block;
-        max-width: 97%;
+      @media (min-width: 841px) {
+        display: none;
       }
 
       input {
-        border: 1px solid $border-light;
+        border: 1px solid var(--border3);
         border-right-style: none;
         border-radius: 5px 0 0 5px;
-        background-color: $sideBar-background;
+        background-color: var(--surface1);
         width: 90px;
         max-width: 97%;
         @media #{$breakpoint-md-up} {
@@ -476,15 +533,15 @@ kbd {
         }
 
         &::placeholder {
-          color: $text-color;
+          color: var(--text2);
         }
       }
 
       button {
-        border: 1px solid $border-light;
+        border: 1px solid var(--border3);
         border-left-style: none;
         border-radius: 0 5px 5px 0;
-        background-color: $sideBar-background;
+        background-color: var(--surface1);
 
         &:hover {
           color: var(--color_text);
@@ -496,6 +553,36 @@ kbd {
         }
       }
     }
+
+    &.configure {
+      @media (min-width: 841px) {
+        text-align: right;
+        padding-right: 1.5rem;
+        width: 50%;
+      }
+
+      .dropdown {
+        @media (min-width: 841px) {
+          pointer-events: all;
+        }
+      }
+    }
+  }
+}
+
+.normal {
+
+  .header {
+    @media (min-width: 841px) {
+      left: 300px;
+      width: calc(100% - 300px);
+    }
+
+    > .item.title {
+      @media (min-width: 841px) {
+        padding-left: 1.5rem;
+      }
+    }
   }
 }
 
@@ -504,7 +591,8 @@ kbd {
 // ====================================
 
 .aside {
-  border-right: 1px solid $border;
+  border-right: 1px solid var(--border2);
+  background-color: var(--surface2);
   @media (max-width: 840px) {
     transition: width 200ms linear;
   }
@@ -512,14 +600,14 @@ kbd {
   &.aside_feed {
     text-align: center;
     padding: 0;
-    @media #{$breakpoint-md-up} {
+    @media (min-width: 841px) {
       padding: 1rem 0;
     }
 
     #btn-subscription {
-      border: 1px solid $border-light;
+      border: 1px solid var(--border3);
       border-radius: 5px 0 0 5px;
-      background-color: $main-bg-light;
+      background-color: var(--surface2);
 
       &:hover {
         color: var(--color_text);
@@ -529,10 +617,10 @@ kbd {
     }
 
     #btn-add {
-      border: 1px solid $border-light;
+      border: 1px solid var(--border3);
       border-left-style: none;
       border-radius: 0 5px 5px 0;
-      background-color: $main-bg-light;
+      background-color: var(--surface2);
 
       .icon {
         opacity: 1;
@@ -544,7 +632,7 @@ kbd {
         background-color: var(--color_dark);
 
         .icon {
-          filter: var(--color_filter);
+          filter: var(--color_filter_fg);
         }
       }
     }
@@ -554,7 +642,7 @@ kbd {
     }
 
     #mark-read-aside {
-      margin-top: 1rem;
+      margin-top: 1.3rem;
     }
 
     .tree {
@@ -595,7 +683,7 @@ kbd {
   margin: 10px 0;
 
   .tree-folder.category {
-    border-top: 1px solid rgba($border, 0.5);
+    border-top: 1px solid rgba(var(--border2), 0.5);
     margin-top: 0.4rem;
 
     .tree-folder-title {
@@ -609,7 +697,7 @@ kbd {
       }
 
       .title {
-        color: $md-gray-400;
+        color: var(--text2);
         background: inherit;
 
         &:hover {
@@ -629,18 +717,18 @@ kbd {
       margin-top: 0;
 
       .title {
-        color: $md-gray-100;
+        color: var(--text2);
       }
 
       &.active {
 
         .icon {
           opacity: 1;
-          filter: var(--color_filter_color);
+          filter: var(--color_filter_bg);
         }
 
         .title {
-          color: var(--color_light);
+          color: $white;
         }
       }
     }
@@ -656,12 +744,12 @@ kbd {
         padding: 0 12px;
 
         &:hover {
-          background-color: $main-bg-light;
+          background-color: var(--surface2);
         }
 
         &.active {
-          background-color: $main-bg-light;
-          box-shadow: inset -3px 0 0 0 var(--color_dark);
+          background-color: var(--surface3);
+          box-shadow: inset -3px 0 0 0 var(--color_base);
         }
 
         .dropdown.no-mobile {
@@ -689,7 +777,7 @@ kbd {
 
       .feed .favicon {
         border-radius: 3px;
-        background-color: $md-gray-100;
+        background-color: $white;
         margin: 7px 8px 7px 0;
         padding: 1px;
       }
@@ -716,7 +804,7 @@ kbd {
 
 // ! Navigation
 .nav-list {
-  padding: 1rem 2rem;
+  padding: 4rem 2rem 1rem;
 
   .item {
     font-size: 14px;
@@ -724,7 +812,7 @@ kbd {
     margin-bottom: 1px;
 
     .nav-header {
-      color: rgba($text-color, 0.5);
+      color: rgba(var(--text2), 0.5);
     }
 
     a {
@@ -741,13 +829,20 @@ kbd {
   }
 }
 
+.normal {
+
+  .nav-list {
+    padding: 1rem 2rem;
+  }
+}
+
 // ====================================
 // ! Slider ===========================
 // ====================================
 
 // ! slide-out
 #slider {
-  background-color: $main-bg;
+  background-color: var(--surface1);
 }
 
 // ====================================
@@ -758,20 +853,23 @@ kbd {
 .nav_menu {
   text-align: center;
   margin-bottom: 0.2rem;
-  padding: 1rem 10px;
+  padding: 1rem 10px 0;
+  @media (min-width: 841px) {
+    padding: 1rem 45px 0 56px;
+  }
 
   .group {
     margin: 0 1px 1rem;
 
     .btn {
-      border-top: 1px solid $border;
-      border-bottom: 1px solid $border;
+      border-top: 1px solid var(--border3);
+      border-bottom: 1px solid var(--border3);
 
       &.toggle_aside,
       &#toggle-order,
       &#actualize {
-        border-right: 1px solid $border;
-        border-left: 1px solid $border;
+        border-right: 1px solid var(--border3);
+        border-left: 1px solid var(--border3);
         border-radius: 5px;
       }
 
@@ -788,14 +886,14 @@ kbd {
     &#nav_menu_actions {
 
       .btn:first-child {
-        border-left: 1px solid $border;
+        border-left: 1px solid var(--border3);
         border-radius: 5px 0 0 5px;
       }
 
       .dropdown {
 
         a {
-          border-right: 1px solid $border;
+          border-right: 1px solid var(--border3);
           border-radius: 0 5px 5px 0;
         }
 
@@ -809,12 +907,12 @@ kbd {
     &#nav_menu_views {
 
       .btn:first-child {
-        border-left: 1px solid $border;
+        border-left: 1px solid var(--border3);
         border-radius: 5px 0 0 5px;
       }
 
       .btn:last-child {
-        border-right: 1px solid $border;
+        border-right: 1px solid var(--border3);
         border-radius: 0 5px 5px 0;
       }
     }
@@ -823,16 +921,16 @@ kbd {
   .btn {
 
     &.active {
-      background-color: rgba($main-bg-light, 0.5);
+      background-color: rgba(var(--surface2), 0.5);
     }
 
     &:hover {
       color: var(--color_text);
-      border-color: --color_dark !important;
+      border-color: var(--color_dark) !important;
       background-color: var(--color_dark);
 
       .icon {
-        filter: var(--color_filter);
+        filter: var(--color_filter_fg);
       }
     }
   }
@@ -844,10 +942,10 @@ kbd {
       border-radius: 5px;
 
       .read_all.btn {
-        color: $text-color;
-        border: 1px solid $border-light;
+        color: var(--text2);
+        border: 1px solid var(--border3);
         border-radius: 5px 0 0 5px !important;
-        background-color: $main-bg-light;
+        background-color: var(--surface1);
         margin: 0;
 
         &:hover {
@@ -858,10 +956,10 @@ kbd {
       }
 
       .dropdown-toggle {
-        border: 1px solid $border-light;
+        border: 1px solid var(--border3);
         border-left-style: none;
         border-radius: 0 5px 5px 0 !important;
-        background-color: $main-bg-light;
+        background-color: var(--surface1);
         margin: 0;
 
         &:hover {
@@ -871,8 +969,47 @@ kbd {
 
           .icon {
             opacity: 1;
-            filter: var(--color_filter);
+            filter: var(--color_filter_fg);
           }
+        }
+      }
+    }
+  }
+
+  #dropdown-search-wrapper.only-mobile {
+    display: block !important;
+
+    &.dropdown {
+
+      a {
+        border-right-style: none;
+        border-radius: 0;
+      }
+
+      .dropdown-menu {
+
+        input {
+          border: 1px solid var(--border3);
+          border-right-style: none;
+          border-radius: 5px 0 0 5px;
+          background-color: var(--surface1);
+          width: 90px;
+          max-width: 97%;
+          @media #{$breakpoint-md-up} {
+            width: 350px;
+            max-width: inherit;
+          }
+
+          &:focus {
+            @media (max-width: 840px) {
+              width: 400px;
+            }
+          }
+        }
+
+        .btn {
+          border-color: var(--border3);
+          border-radius: 0 5px 5px 0;
         }
       }
     }
@@ -912,8 +1049,8 @@ kbd {
 #nav_entries {
   line-height: 3;
   text-align: center;
-  border-top: 1px solid $border;
-  background-color: rgba($main-bg, 0.5);
+  border-top: 1px solid var(--border3);
+  background-color: rgba(var(--surface2), 0.5);
   backdrop-filter: blur(10px);
   table-layout: fixed;
   margin: 0;
@@ -944,7 +1081,7 @@ kbd {
 
 #load_more.loading,
 #load_more.loading:hover {
-  background: $main-bg url("loader.gif") no-repeat center !important;
+  background: var(--surface1) url("loader.gif") no-repeat center !important;
 }
 
 // ! Load more
@@ -952,7 +1089,7 @@ kbd {
   border-top-style: none;
 
   .stream-footer-inner {
-    color: $md-gray-400;
+    color: var(--text2);
     font-size: 14px;
     padding-top: 2rem;
 
@@ -972,8 +1109,8 @@ kbd {
         @include buttonbtn;
         color: var(--color_text);
         font-size: 16px;
-        border-color: $border-light;
-        background-color: $main-bg;
+        border-color: var(--border3);
+        background-color: var(--surface1);
         display: block;
         padding: 0.75rem 1rem;
 
@@ -982,6 +1119,13 @@ kbd {
           border-color: var(--color_light);
           background-color: var(--color_dark);
         }
+      }
+
+      .jumpNext {
+        color: var(--text2);
+        font-size: 14px;
+        display: inline-block;
+        padding-top: 1rem;
       }
     }
   }
@@ -995,51 +1139,60 @@ main {
 
   a,
   button.as-link {
-  color: var(--color_light);
+		color: var(--color_base);
   }
 }
 
 // ! Day
-#stream .day {
-  color: $md-gray-500;
-  font-size: 14px;
-  text-align: right;
-  border-bottom: 2px solid $border-light;
-  position: relative;
-  padding: 10px;
+#stream {
+  padding: 0 2rem;
 
-  .date {
+  .day {
+    color: var(--text2);
+    font-size: 14px;
+    text-align: right;
+    border-bottom: 2px solid var(--border1);
+    position: relative;
+    padding: 16px 10px 10px;
 
-    sup {
-      font-size: inherit;
+    .date {
+
+      sup {
+        font-size: inherit;
+        display: none;
+        vertical-align: unset;
+      }
+    }
+
+    .name {
+      color: var(--text1);
+      font-size: 23px;
+      text-align: left;
       display: none;
-      vertical-align: unset;
+      top: 0.35rem;
+      right: auto;
+      left: 10px;
+      padding: 0 10px 0 0;
+      width: auto;
+    }
+
+    &:nth-child(3) .name {
+      display: block;
     }
   }
 
-  .name {
-    color: $white;
-    font-size: 26px;
-    text-align: left;
-    display: none;
-    top: -4px;
-    right: auto;
-    left: 10px;
-    padding: 0 10px 0 0;
-    width: auto;
-  }
-
-  &:nth-child(3) .name {
-    display: block;
+  &.global,
+  &.reader {
+    border-top: 1px solid var(--border2);
   }
 }
 
 // ! Feed articles (flux)
 #stream:not(.reader) .flux {
-  border-bottom: 1px solid rgba($border, 0.5);
+  border-bottom: 1px solid var(--border1);
 
   a {
-    color: $link-color-light;
+    color: var(--text1);
   }
 
   &.not_read {
@@ -1048,7 +1201,7 @@ main {
     .item.titleAuthorSummaryDate {
 
       a {
-        color: $link-color-light;
+        color: var(--text1);
         font-weight: normal;
       }
     }
@@ -1058,7 +1211,7 @@ main {
   .item.titleAuthorSummaryDate {
 
     a {
-      color: $md-gray-500;
+      color: var(--text3);
       font-weight: normal;
 
       &:hover {
@@ -1073,11 +1226,19 @@ main {
     }
 
     a {
-      color: $md-gray-400;
-    }
 
-    .favicon {
-      padding: 5px;
+			.favicon {
+				border-radius: 3px;
+				background-color: $white;
+				padding: 2px;
+			}
+
+			&:hover {
+
+				.favicon {
+					filter: unset;
+				}
+			}
     }
   }
 
@@ -1102,7 +1263,7 @@ main {
 
     a,
     .date {
-      color: $md-gray-500;
+      color: var(--text2);
 
     }
 
@@ -1151,7 +1312,7 @@ main {
 
 // ! Content of feed articles
 .content {
-  padding: 20px 10px;
+  // padding: 20px 10px;
 
   header {
     position: relative;
@@ -1160,7 +1321,7 @@ main {
 
     &::after {
       content: "";
-      background-color: $md-gray-700;
+      // background-color: $gravity-gray-15;
       position: absolute;
       bottom: 0;
       left: 3rem;
@@ -1183,7 +1344,7 @@ main {
   }
 
   .list-tags .link-tag {
-    color: $md-gray-400;
+    color: var(--text2);
   }
 
   hr {
@@ -1206,7 +1367,7 @@ main {
 
   blockquote {
     font-style: italic;
-    border-left: 5px solid $md-gray-700;
+    border-left: 5px solid var(--border2);
     display: block;
     margin: 1rem 0 1rem 1rem;
     padding: 0 5px 0 20px;
@@ -1220,9 +1381,7 @@ main {
 // ! Reader View
 
 #stream.reader .flux {
-  color: #333;
-  border-top: 1px solid $md-gray-300;
-  background-color: $md-gray-50;
+  color: var(--text1);
 
   &:first-child {
     border-top-style: none;
@@ -1234,11 +1393,11 @@ main {
 
     .icon {
       opacity: 1;
-      filter: var(--color_filter_color);
+      filter: var(--color_filter_bg);
     }
 
     .list-tags .link-tag {
-      color: $md-gray-500;
+      color: var(--text2);
     }
 
     header .tags {
@@ -1252,7 +1411,7 @@ main {
     }
 
     a {
-      color: $md-gray-700;
+      color: var(--text1);
       text-decoration: underline;
 
       &:hover {
@@ -1270,6 +1429,28 @@ main {
         }
       }
     }
+
+		.website {
+			@media (max-width: 840px) {
+				display: none;
+			}
+
+			a {
+
+				.favicon {
+					border-radius: 3px;
+					background-color: $white;
+					padding: 2px;
+				}
+
+				&:hover {
+
+					.favicon {
+						filter: unset;
+					}
+				}
+			}
+		}
   }
 
   .author {
@@ -1282,7 +1463,7 @@ main {
 .box {
 
   a {
-    color: $text-color;
+    color: var(--text2);
   }
 
   .box-title {
@@ -1345,7 +1526,7 @@ main {
 }
 
 .box:not(.visible-semi) {
-  border: 2px solid $border;
+  border: 2px solid var(--border2);
   border-radius: 8px;
 }
 
@@ -1354,7 +1535,6 @@ main {
 }
 
 // ! Statistics
-
 .stat {
   margin: 10px 0 20px;
 
@@ -1388,7 +1568,7 @@ main {
 }
 
 .theme-preview-list {
-  border-color: $border-light;
+  border-color: var(--border2);
   border-radius: 5px;
 
   .properties {

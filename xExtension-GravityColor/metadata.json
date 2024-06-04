@@ -1,8 +1,0 @@
-{
-	"name": "Gravity Highlight Color",
-	"author": "Frank Yonnetti",
-	"description": "Apply color highlight to Gravity theme.",
-	"version": "0.1.0",
-	"entrypoint": "GravityColor",
-	"type": "user"
-}
