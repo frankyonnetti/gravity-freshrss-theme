@@ -20,7 +20,7 @@ jobs:
     - name: connect and pull
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
     - name: move files
-      run: "./scripts/move-files.sh"
+      run: "cp -a ${{ secrets.THEME_REPO_PATH }} ${{ secrets.THEME_PATH }}"
     - name: disconnect
       run: "exit"
     - name: cleanup
