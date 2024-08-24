@@ -661,13 +661,8 @@ kbd {
 }
 
 // MARK: Aside main page (categories)
-.aside_feed .tree-folder-title > .title:not([data-unread="0"])::after {
-  font-size: 14px;
-  line-height: 1.5;
-  position: absolute;
-  right: 0;
-  margin: 10px 0;
-  padding: 0 10px;
+#aside_feed .tree-folder-title > .title:not([data-unread="0"])::after {
+  padding-right: 0;
 }
 
 .feed.active .item-title:not([data-unread="0"])::after {
