@@ -15,10 +15,13 @@
 
 @mixin buttonbtn {
   @include btn;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 5px;
-  transition: color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
+  // new behavior for declarations after nested rules
+  & {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    transition: color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
+  }
 
   &:hover {
     transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;

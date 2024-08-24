@@ -1,4 +1,4 @@
-// ! grid
+// MARK: grid
 $grid-1: math.div(1, 12) * 100%; // 8.33333333333%
 $grid-2: math.div(2, 12) * 100%; // 16.6666666667%
 $grid-3: 25%;
@@ -12,14 +12,14 @@ $grid-10: math.div(10, 12) * 100%; // 83.3333333333%
 $grid-11: math.div(11, 12) * 100%; // 91.6666666667%
 $grid-12: 100%;
 
-// ! breakpoints
+// MARK: breakpoints
 $breakpoint-xs-only: "(max-width: 480px)";
 $breakpoint-sm-up: "(min-width: 601px)";
 $breakpoint-md-up: "(min-width: 841px)";
 $breakpoint-lg-up: "(min-width: 993px)";
 $breakpoint-xl-up: "(min-width: 1201px)";
 
-// ! Argyle color
+// MARK: Argyle color
 // https://web.dev/articles/building/a-color-scheme
 
 html {
@@ -105,7 +105,7 @@ html {
 //   }
 // }
 
-// ! other colors
+// MARK: other colors
 
 $white: #ffffff;
 $black: #222222;

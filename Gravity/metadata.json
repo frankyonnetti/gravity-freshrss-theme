@@ -2,7 +2,7 @@
   "name": "Gravity",
   "author": "Frank Yonnetti",
   "description": "A dark theme based on the Gravity for VS Code and Sublime Text.",
-  "version": 0.1,
+  "version": 0.2,
   "files": ["_frss.css", "gravity.css"],
   "theme-color": "#22282a"
 }
