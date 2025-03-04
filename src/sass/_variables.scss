@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // MARK: grid
 $grid-1: math.div(1, 12) * 100%; // 8.33333333333%
 $grid-2: math.div(2, 12) * 100%; // 16.6666666667%
