@@ -163,9 +163,9 @@ textarea {
   }
 }
 
-input[type=text],
-input[type=number],
-input[type=url] {
+input[type="text"],
+input[type="number"],
+input[type="url"] {
 
   &:focus-visible {
     outline: 1px solid var(--color_light);
@@ -173,7 +173,7 @@ input[type=url] {
   }
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
   /* Remove most all native input styles */
   -webkit-appearance: none;
   appearance: none;
@@ -373,8 +373,8 @@ kbd {
   text-align: left;
   border-color: rgba(var.$white, 0.2);
   border-radius: 8px;
-  background-color: rgba(var(--surface1), 0.6);
-  box-shadow: 0 14px 40px 4px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.65);
+  background-color: rgb(var(--surface1), 0.6);
+  box-shadow: 0 14px 40px 4px rgb(0 0 0 / 0.25), 0 0 0 1px rgb(0 0 0 / 0.65);
   margin: 5px 0 0;
   padding: 5px 0;
   backdrop-filter: blur(30px);
@@ -398,8 +398,9 @@ kbd {
     }
 
     .dropdown-section-title {
-      color: rgba(var(--text2), 0.5);
-      padding: 4px 10px;
+      color: rgb(var(--text2), 0.5);
+      font-weight: 700;
+      padding: 6px 10px;
     }
 
     > a,
@@ -453,16 +454,32 @@ kbd {
   padding: 0 5px 5px;
 }
 
-@supports (scrollbar-width: thin) {
+.scrollbar-thin {
+  scrollbar-color: unset;
+  scrollbar-width: unset;
 
-  .scrollbar-thin {
-    scrollbar-color: #55595a var(--surface2);
-    scrollbar-width: thin;
+  &:hover {
+  	scrollbar-color: unset;
+  }
 
-		&:hover {
-			scrollbar-color: #737c7e var(--surface2);
-		}
-	}
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: var(--surface2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 1px solid var(--surface2);
+    border-radius: 10px;
+    background-color: #55595a;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #737c7e;
+  }
 }
 
 // ====================================
@@ -690,7 +707,7 @@ kbd {
   margin: 10px 0;
 
   .tree-folder.category {
-    border-top: 1px solid rgba(var(--border2), 0.5);
+    border-top: 1px solid rgb(var(--border2), 0.5);
     margin-top: 0.4rem;
 
     .tree-folder-title {
@@ -825,7 +842,7 @@ kbd {
     margin-bottom: 1px;
 
     .nav-header {
-      color: rgba(var(--text2), 0.5);
+      color: rgb(var(--text2), 0.5);
     }
 
     a {
@@ -934,7 +951,7 @@ kbd {
   .btn {
 
     &.active {
-      background-color: rgba(var(--surface2), 0.5);
+      background-color: rgb(var(--surface2), 0.5);
     }
 
     &:hover {
@@ -1063,7 +1080,7 @@ kbd {
   line-height: 3;
   text-align: center;
   border-top: 1px solid var(--border3);
-  background-color: rgba(var(--surface2), 0.5);
+  background-color: rgb(var(--surface2), 0.5);
   backdrop-filter: blur(10px);
   table-layout: fixed;
   margin: 0;
