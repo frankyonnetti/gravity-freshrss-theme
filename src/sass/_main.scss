@@ -627,9 +627,17 @@ kbd {
   }
 
   &.aside_feed {
+    text-align: center;
     padding: 0;
     @media (min-width: 841px) {
+      text-align: left;
       padding: 1rem 0;
+    }
+
+    .toggle_aside {
+      @media (max-width: 840px) {
+        border-style: none;
+      }
     }
 
     #btn-subscription {
