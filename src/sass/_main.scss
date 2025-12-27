@@ -627,7 +627,6 @@ kbd {
   }
 
   &.aside_feed {
-    text-align: center;
     padding: 0;
     @media (min-width: 841px) {
       padding: 1rem 0;
@@ -635,8 +634,10 @@ kbd {
 
     #btn-subscription {
       border: 1px solid var(--border3);
-      border-radius: 5px 0 0 5px;
+      border-radius: 32px 0 0 32px;
       background-color: var(--surface2);
+      margin-left: 9px;
+      padding-left: 15px;
 
       &:hover {
         color: var(--color_text);
@@ -648,8 +649,9 @@ kbd {
     #btn-add {
       border: 1px solid var(--border3);
       border-left-style: none;
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 32px 32px 0;
       background-color: var(--surface2);
+      padding-right: 13px;
 
       .icon {
         opacity: 1;
@@ -882,10 +884,36 @@ kbd {
 // MARK: nav_menu toolbar
 .nav_menu {
   text-align: center;
+  background-color: transparent;
+  position: unset;
   margin-bottom: 0.2rem;
   padding: 1rem 10px 0;
   @media (min-width: 841px) {
     padding: 1rem 45px 0 56px;
+  }
+
+  #nav_menu_toggle_aside {
+    left: 24px;
+
+    &:has(.btn.active) {
+      left: 253px;
+    }
+
+    .btn {
+      border-style: none;
+      background: url("icons/sidebar-left.svg") no-repeat center;
+      background-size: 20px auto;
+      margin-top: 3px;
+
+      &:hover {
+        color: var(--color_text);
+        background-color: var(--color_dark);
+      }
+    }
+
+    img {
+      opacity: 0;
+    }
   }
 
   .group {
@@ -900,7 +928,7 @@ kbd {
       &#actualize {
         border-right: 1px solid var(--border3);
         border-left: 1px solid var(--border3);
-        border-radius: 5px;
+        border-radius: 32px;
       }
 
       &.toggle_aside .icon {
@@ -917,14 +945,16 @@ kbd {
 
       .btn:first-child {
         border-left: 1px solid var(--border3);
-        border-radius: 5px 0 0 5px;
+        border-radius: 32px 0 0 32px;
+        padding-left: 15px;
       }
 
       .dropdown {
 
         a {
           border-right: 1px solid var(--border3);
-          border-radius: 0 5px 5px 0;
+          border-radius: 0 32px 32px 0;
+          padding-right: 15px;
         }
 
         .dropdown-menu a {
@@ -938,12 +968,14 @@ kbd {
 
       .btn:first-child {
         border-left: 1px solid var(--border3);
-        border-radius: 5px 0 0 5px;
+        border-radius: 32px 0 0 32px;
+        padding-left: 15px;
       }
 
       .btn:last-child {
         border-right: 1px solid var(--border3);
-        border-radius: 0 5px 5px 0;
+        border-radius: 0 32px 32px 0;
+        padding-right: 15px;
       }
     }
   }
@@ -974,9 +1006,10 @@ kbd {
       .read_all.btn {
         color: var(--text2);
         border: 1px solid var(--border3);
-        border-radius: 5px 0 0 5px !important;
+        border-radius: 32px 0 0 32px !important;
         background-color: var(--surface1);
         margin: 0;
+        padding-left: 15px;
 
         &:hover {
           color: var(--color_text);
@@ -988,9 +1021,10 @@ kbd {
       .dropdown-toggle {
         border: 1px solid var(--border3);
         border-left-style: none;
-        border-radius: 0 5px 5px 0 !important;
+        border-radius: 0 32px 32px 0 !important;
         background-color: var(--surface1);
         margin: 0;
+        padding-right: 15px;
 
         &:hover {
           color: var(--color_text);
