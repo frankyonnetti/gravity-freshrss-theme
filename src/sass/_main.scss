@@ -1255,6 +1255,29 @@ main {
 }
 
 // MARK: Feed articles (flux)
+#stream:not(.reader) {
+
+  .transition {
+    border-radius: 32px;
+    background-color: var(--surface2);
+    margin: -1px -14px 0;
+    padding: 10px 0;
+
+    .transition-value {
+      font-size: 14px;
+      padding-left: 25px;
+
+      a {
+        color: var(--text2-dark);
+      }
+    }
+
+    .name {
+      font-size: 14px;
+    }
+  }
+}
+
 #stream:not(.reader) .flux {
   border-bottom: 1px solid var(--border1);
 
@@ -1449,6 +1472,10 @@ main {
 }
 
 // MARK: Reader View
+.reader .flux .flux_content {
+  border-style: none;
+  background-color: var(--surface2-dark);
+}
 
 #stream.reader .flux {
   color: var(--text1);
