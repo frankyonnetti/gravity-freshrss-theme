@@ -1,3 +1,5 @@
+@use "sass:color";
+
 @use "mixins" as mix;
 @use "variables" as var;
 
@@ -859,6 +861,7 @@ kbd {
       text-decoration: none;
       border-radius: 5px;
       padding: 0 8px;
+      width: calc(100% - 16px);
     }
 
     a:hover,
@@ -1267,9 +1270,9 @@ main {
 
   .transition {
     border-radius: 32px;
-    background-color: var(--surface2);
+    background-color: color.adjust(rgb(23 26 28), $lightness: 2%);
     margin: -1px -14px 0;
-    padding: 10px 0;
+    padding: 8px 0 10px;
 
     .transition-value {
       font-size: 14px;
@@ -1277,6 +1280,10 @@ main {
 
       a {
         color: var(--text2-dark);
+      }
+
+      sup {
+        display: none;
       }
     }
 
