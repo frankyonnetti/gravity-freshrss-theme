@@ -388,6 +388,7 @@ kbd {
   .as-link {
     border-color: var(--border2);
     background-color: transparent;
+    padding-left: 8px;
   }
 
   .item {
@@ -869,6 +870,10 @@ kbd {
       color: var(--color_text);
       background-color: var(--color_dark);
     }
+
+    .as-link img {
+      float: right;
+    }
   }
 }
 
@@ -1011,7 +1016,7 @@ kbd {
   .stick {
     border-style: none;
 
-    #mark-read-menu {
+    .mark-read-menu {
       border-radius: 5px;
 
       .read_all.btn {
@@ -1031,11 +1036,14 @@ kbd {
 
       .dropdown-toggle {
         border: 1px solid var(--border3);
-        border-left-style: none;
-        border-radius: 0 32px 32px 0 !important;
+        border-radius: 32px !important;
         background-color: var(--surface1);
         margin: 0;
         padding-right: 15px;
+        @media (min-width: 841px) {
+          border-left-style: none;
+          border-radius: 0 32px 32px 0 !important;
+        }
 
         &:hover {
           color: var(--color_text);
@@ -1046,6 +1054,10 @@ kbd {
             opacity: 1;
             filter: var(--color_filter_fg);
           }
+        }
+
+        &::after {
+          content: none;
         }
       }
     }

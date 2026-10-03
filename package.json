@@ -26,16 +26,16 @@
     "not dead"
   ],
   "devDependencies": {
-    "autoprefixer": "^10.4.23",
+    "autoprefixer": "^10.6.1",
     "concurrently": "^8.2.2",
-    "nodemon": "^3.1.11",
-    "postcss": "^8.5.6",
+    "nodemon": "^3.1.14",
+    "postcss": "^8.5.28",
     "postcss-cli": "^11.0.1",
     "postcss-pxtorem": "^6.1.0",
-    "sass": "^1.97.1",
+    "sass": "^1.105.1",
     "stylelint": "^16.26.1",
     "stylelint-config-standard-scss": "^15.0.1",
     "stylelint-order": "^6.0.4",
-    "svgo": "^3.3.2"
+    "svgo": "^3.3.5"
   }
 }
